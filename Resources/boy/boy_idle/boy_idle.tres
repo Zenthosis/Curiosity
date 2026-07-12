@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" format=3 uid="uid://df17k8xnspmvv"]
+
+[ext_resource type="Texture2D" uid="uid://iaac00850w6x" path="res://Assets/Art/Boy/boy-32-64-idele.png" id="1_et251"]
+[ext_resource type="Texture2D" uid="uid://dbioxy0jjjc2k" path="res://Assets/Art/Boy/boy-32-64-idele_normalmap.png" id="2_trxn5"]
+
+[resource]
+diffuse_texture = ExtResource("1_et251")
+normal_texture = ExtResource("2_trxn5")

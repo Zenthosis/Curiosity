@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dkih1u82ce2ce"]
+
+[ext_resource type="Texture2D" uid="uid://c5pehlggc1ckc" path="res://Assets/Art/hotdogtest.png" id="1_l7dp1"]
+[ext_resource type="Texture2D" uid="uid://dq414ulus5n8q" path="res://Assets/Art/hotdogtestnormalmap.png" id="2_hh1bc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_62k0p"]
+diffuse_texture = ExtResource("1_l7dp1")
+normal_texture = ExtResource("2_hh1bc")
+
+[node name="Hotdog" type="Node2D" unique_id=2074536408]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1679467633]
+texture = SubResource("CanvasTexture_62k0p")

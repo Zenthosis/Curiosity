@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bmuen6rqx42ri"]
+
+[ext_resource type="Script" uid="uid://bqqwxsn4bqwlp" path="res://Scripts/torch.gd" id="1_beu3c"]
+[ext_resource type="Texture2D" uid="uid://bxaw5r0l8pnth" path="res://Assets/Art/Boy/torch light.png" id="3_7ufd5"]
+[ext_resource type="Texture2D" uid="uid://ble4d1owkb30f" path="res://Resources/torchlighttexture.png" id="3_beu3c"]
+
+[node name="Torch" type="Node2D" unique_id=1919540944]
+script = ExtResource("1_beu3c")
+
+[node name="TorchSprite" type="Sprite2D" parent="." unique_id=1350335161]
+texture = ExtResource("3_7ufd5")
+
+[node name="TorchLight2D" type="PointLight2D" parent="TorchSprite" unique_id=1420773775]
+position = Vector2(-5, 0)
+rotation = -3.1415927
+scale = Vector2(2.0650823, 2.7265697)
+color = Color(0.7322907, 0.3214203, 1, 1)
+energy = 3.0
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("3_beu3c")
+offset = Vector2(26, 0)
+height = 20.0

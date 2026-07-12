@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b2eanqwu0awnq"]
+
+[ext_resource type="Texture2D" uid="uid://bedertyqyuww2" path="res://Assets/Art/Interior/Texture/test slab.png" id="1_2s4k4"]
+[ext_resource type="Texture2D" uid="uid://dr7px0hhofm4v" path="res://Assets/Art/Interior/Texture/test slab normal.png" id="2_8rhbl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8rhbl"]
+diffuse_texture = ExtResource("1_2s4k4")
+normal_texture = ExtResource("2_8rhbl")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2s4k4"]
+polygon = PackedVector2Array(-53, -109, -53, 6, -46.552536, 2.2183075, -47, -8, -48, -50, -45, -95, -28, -93, -12, -101, 15, -93, 43, -88, 46, -48, 43, -2, 47, 5, 52, 7, 51, -109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s4k4"]
+size = Vector2(104, 61.25)
+
+[node name="slab" type="StaticBody2D" unique_id=1254305690]
+light_mask = 2
+
+[node name="Hidden2" type="Sprite2D" parent="." unique_id=949463636]
+light_mask = 2
+texture = SubResource("CanvasTexture_8rhbl")
+offset = Vector2(0, -60)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Hidden2" unique_id=1731924044]
+position = Vector2(1, -6)
+occluder = SubResource("OccluderPolygon2D_2s4k4")
+occluder_light_mask = 1048575
+
+[node name="Hidden" type="Sprite2D" parent="." unique_id=679043556]
+visible = false
+light_mask = 2
+texture = SubResource("CanvasTexture_8rhbl")
+offset = Vector2(0, -60)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Hidden" unique_id=1565124780]
+visible = false
+position = Vector2(1, -6)
+occluder = SubResource("OccluderPolygon2D_2s4k4")
+occluder_light_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759992617]
+position = Vector2(0, -30.625)
+shape = SubResource("RectangleShape2D_2s4k4")
