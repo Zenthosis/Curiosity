@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cu8hfyd5onwu5"]
+
+[ext_resource type="Texture2D" uid="uid://dg161xf0tjf7x" path="res://Assets/Art/Interactables/HiddenMsg1..png" id="1_l3kex"]
+[ext_resource type="Texture2D" uid="uid://61dj6qn8lkc1" path="res://Assets/Art/Interactables/SecretMsg1_normal.png" id="2_xu4ft"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_object.tscn" id="3_e8uoi"]
+[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="4_yogcl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48d0g"]
+light_mode = 2
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0q2o4"]
+diffuse_texture = ExtResource("1_l3kex")
+normal_texture = ExtResource("2_xu4ft")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_csml2"]
+radius = 8.0
+height = 44.0
+
+[node name="NormalMsg1" type="Node2D" unique_id=412037829]
+z_as_relative = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1760029231]
+light_mask = 0
+z_as_relative = false
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_48d0g")
+texture = SubResource("CanvasTexture_0q2o4")
+offset = Vector2(0, -60)
+flip_v = true
+
+[node name="interactive_object" parent="." unique_id=1673793516 instance=ExtResource("3_e8uoi")]
+
+[node name="NotifMarker2D" parent="interactive_object" index="0" unique_id=758833783]
+position = Vector2(-38, -45)
+
+[node name="InteractionArea2D" parent="interactive_object" index="1" unique_id=64458683]
+position = Vector2(-28, 24)
+
+[node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("4_yogcl")]
+position = Vector2(0, -60)
+
+[node name="CollisionShape2D" parent="detectionArea2D" index="0" unique_id=1628464791]
+shape = SubResource("CapsuleShape2D_csml2")
+
+[editable path="interactive_object"]
+[editable path="detectionArea2D"]

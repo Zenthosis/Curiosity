@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ceubp14d3bhu5"]
+
+[ext_resource type="Shader" uid="uid://b4xbdka42q12k" path="res://Shader/fragment_basics.tres" id="1_1t2t8"]
+[ext_resource type="Texture2D" uid="uid://d2nspifbqekrf" path="res://Resources/boy/boy_idle/torchlight.tres" id="2_1t2t8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo44t"]
+shader = ExtResource("1_1t2t8")
+
+[node name="Node2D" type="Node2D" unique_id=587366747]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1442461921]
+material = SubResource("ShaderMaterial_bo44t")
+position = Vector2(10.0000305, 0)
+scale = Vector2(0.6484375, 0.6445313)
+texture = ExtResource("2_1t2t8")
+
+[node name="Camera2D" type="Camera2D" parent="Icon" unique_id=1076300276]
+zoom = Vector2(5, 5)

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c6atqxtova5ic"]
+
+[ext_resource type="Script" uid="uid://bqqwxsn4bqwlp" path="res://Scripts/light_tool.gd" id="1_2pskx"]
+[ext_resource type="Texture2D" uid="uid://bybtjn5u30ljo" path="res://Assets/Art/normal_flame.png" id="2_qarvl"]
+[ext_resource type="Texture2D" uid="uid://nekc2g1up3q0" path="res://Assets/Art/light_circle.png" id="3_m34x7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m34x7"]
+radius = 50.01
+
+[node name="Torch" type="Node2D" unique_id=1919540944 groups=["lights"]]
+script = ExtResource("1_2pskx")
+item_name = "Torch"
+icon = ExtResource("2_qarvl")
+
+[node name="LightSprite" type="Sprite2D" parent="." unique_id=1350335161]
+texture = ExtResource("2_qarvl")
+
+[node name="Light2D" type="PointLight2D" parent="LightSprite" unique_id=1420773775]
+y_sort_enabled = true
+color = Color(1, 0.7058824, 0.21960784, 1)
+energy = 4.0
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("3_m34x7")
+texture_scale = 4.0
+height = 365.0
+
+[node name="LightDetectionArea2D" type="Area2D" parent="LightSprite/Light2D" unique_id=1233469823]
+collision_layer = 768
+collision_mask = 256
+
+[node name="LightDetectionShape2D" type="CollisionShape2D" parent="LightSprite/Light2D/LightDetectionArea2D" unique_id=1065751616]
+shape = SubResource("CircleShape2D_m34x7")

@@ -1,0 +1,7 @@
+if {HumanDrawingVars.human_drawing_knowledge} == false:
+	Nicky: A... human.
+	Nicky: Praying?
+	Nicky: Or defending themselves against someone?
+	Nicky: ... Or something?
+	set {HumanDrawingVars.human_drawing_counter} += 1
+	set {HumanDrawingVars.human_drawing_knowledge} = true

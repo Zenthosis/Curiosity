@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b2eanqwu0awnq"]
+
+[ext_resource type="Texture2D" uid="uid://bedertyqyuww2" path="res://Assets/Art/Interior/Texture/test slab.png" id="1_2s4k4"]
+[ext_resource type="Texture2D" uid="uid://dr7px0hhofm4v" path="res://Assets/Art/Interior/Texture/test slab normal.png" id="2_8rhbl"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/interactive_object.tscn" id="4_0u011"]
+[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/detection_area_2d.tscn" id="5_nqycw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8rhbl"]
+diffuse_texture = ExtResource("1_2s4k4")
+normal_texture = ExtResource("2_8rhbl")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2s4k4"]
+polygon = PackedVector2Array(-53, -109, -53, 6, -46.552536, 2.2183075, -47, -8, -48, -50, -45, -95, -28, -93, -12, -101, 15, -93, 43, -88, 46, -48, 43, -2, 47, 5, 52, 7, 51, -109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s4k4"]
+size = Vector2(104, 61.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wj3dx"]
+radius = 5.0
+
+[node name="slab" type="StaticBody2D" unique_id=1254305690]
+light_mask = 2
+
+[node name="Hidden2" type="Sprite2D" parent="." unique_id=949463636]
+light_mask = 2
+texture = SubResource("CanvasTexture_8rhbl")
+offset = Vector2(0, -60)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Hidden2" unique_id=1731924044]
+position = Vector2(1, -6)
+occluder = SubResource("OccluderPolygon2D_2s4k4")
+occluder_light_mask = 1048575
+
+[node name="SlabCollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759992617]
+position = Vector2(0, -30.625)
+shape = SubResource("RectangleShape2D_2s4k4")
+
+[node name="Human_Drawing" type="Node2D" parent="." unique_id=800241593]
+position = Vector2(-27, -52)
+
+[node name="interactive_object" parent="Human_Drawing" unique_id=662824899 instance=ExtResource("4_0u011")]
+interaction_type = 1
+
+[node name="detectionArea2D" parent="Human_Drawing" unique_id=942763582 instance=ExtResource("5_nqycw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Human_Drawing/detectionArea2D" unique_id=1190234936]
+shape = SubResource("CapsuleShape2D_wj3dx")
+
+[node name="Being_Drawing" type="Node2D" parent="." unique_id=593491955]
+position = Vector2(16, -68)
+
+[node name="interactive_object" parent="Being_Drawing" unique_id=148513385 instance=ExtResource("4_0u011")]
+interaction_type = 1
+
+[node name="detectionArea2D" parent="Being_Drawing" unique_id=113706796 instance=ExtResource("5_nqycw")]
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Being_Drawing/detectionArea2D" unique_id=1722640486]
+shape = SubResource("CapsuleShape2D_wj3dx")

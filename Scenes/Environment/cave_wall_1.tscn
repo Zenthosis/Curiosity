@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfkbj6buo8q8a"]
+
+[ext_resource type="Texture2D" uid="uid://fglnl1fhc67e" path="res://Assets/Art/Cave/cave_wall.png" id="1_02alt"]
+[ext_resource type="Shader" uid="uid://b8y5p0p6ankkd" path="res://Shader/opaque_material.gdshader" id="1_66ig6"]
+[ext_resource type="Texture2D" uid="uid://dtpkarwc5pdcp" path="res://Assets/Art/Cave/cave_wall_normal.png" id="2_02alt"]
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="4_i21k2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjpvd"]
+shader = ExtResource("1_66ig6")
+shader_parameter/object_pos = Vector2(0, 0)
+shader_parameter/light_pos = Vector2(0, 0)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_35td5"]
+diffuse_texture = ExtResource("1_02alt")
+normal_texture = ExtResource("2_02alt")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7qqns"]
+polygon = PackedVector2Array(100, -122, 100, -119, 99, -119, 99, -117, 98, -117, 98, -115, 97, -115, 97, -113, 96, -113, 96, -112, 95, -112, 95, -110, 94, -110, 94, -109, 79, -109, 79, -108, 73, -108, 69, -108, 69, -107, 68, -107, 68, -106, 67, -106, 67, -105, 66, -105, 66, -104, 65, -104, 65, -103, 64, -103, 64, -102, 62, -102, 62, -101, 57, -101, 54, -101, 54, -100, 51, -100, 51, -99, 47, -99, 47, -98, 45, -98, 45, -97, 41, -97, 37, -97, 37, -96, 36, -96, 36, -95, 34, -95, 34, -94, 32, -94, 32, -93, 29, -93, 29, -92, 26, -92, 26, -91, 25, -91, 24, -91, 24, -90, 22, -90, 22, -89, 20, -89, 20, -88, 18, -88, 18, -87, 15, -87, 15, -86, 13, -86, 13, -85, 11, -85, 11, -84, 10, -84, 10, -83, 8, -83, 8, -82, 7, -82, 7, -81, 6, -81, 6, -80, 5, -80, 5, -79, 5, -79, 4, -79, 4, -82, 4, -86, 5, -86, 5, -87, 6, -87, 6, -88, 7, -88, 7, -89, 8, -89, 8, -90, 9, -90, 9, -92, 10, -92, 10, -93, 11, -93, 11, -94, 12, -94, 12, -95, 13, -95, 13, -96, 15, -96, 15, -97, 16, -97, 16, -98, 11, -98, 8.5631275, -98.8254, -52, -116, -50, -116, -50, -117, -42, -117, -42, -118, -34.085487, -118, -34, -119, -30, -119, -15, -119, -15, -120, -10, -120, -10, -121, -4, -121, -4, -122, 0, -122, 0, -123, 3, -123, 3, -124, 9, -124, 9, -125, 37, -125, 37, -124, 44, -124, 44, -123, 53, -123, 53, -122, 74, -122)
+
+[node name="CaveWallOne" type="StaticBody2D" unique_id=439633875]
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415304949]
+light_mask = 6
+material = SubResource("ShaderMaterial_wjpvd")
+texture = SubResource("CanvasTexture_35td5")
+offset = Vector2(0, -20)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=128513557]
+visible = false
+position = Vector2(-14, 52)
+polygon = PackedVector2Array(7, -11, 66, -18, 51, -85, -83, -85, -83, 5, -1, 5)
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=149444941]
+position = Vector2(0, 30)
+occluder = SubResource("OccluderPolygon2D_7qqns")
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("4_i21k2")]

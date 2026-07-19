@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c5tg7bspaj1xg"]
+
+[ext_resource type="Texture2D" uid="uid://bh36xrfbpsllv" path="res://Assets/Art/Cave/cave_ceiling_back_layer.png" id="1_ctqxt"]
+[ext_resource type="Texture2D" uid="uid://cyjmwswp7sp6d" path="res://Assets/Art/Cave/cave_ceiling_front_layer.png" id="2_sgsws"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ctqxt"]
+
+[node name="CaveCeiling" type="Node2D" unique_id=55630341]
+z_as_relative = false
+
+[node name="CaveCeilingBackLayer" type="Sprite2D" parent="." unique_id=1562484930]
+texture = ExtResource("1_ctqxt")
+
+[node name="CaveCeilingFrontLayer" type="Sprite2D" parent="." unique_id=502438642]
+light_mask = 16
+material = SubResource("CanvasItemMaterial_ctqxt")
+texture = ExtResource("2_sgsws")

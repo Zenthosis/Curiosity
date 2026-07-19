@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bmuen6rqx42ri"]
+
+[ext_resource type="Script" uid="uid://bqqwxsn4bqwlp" path="res://Scripts/light_tool.gd" id="1_beu3c"]
+[ext_resource type="Texture2D" uid="uid://bxaw5r0l8pnth" path="res://Assets/Art/Boy/flashlight.png" id="3_7ufd5"]
+[ext_resource type="Texture2D" uid="uid://ble4d1owkb30f" path="res://Resources/torchlighttexture.png" id="3_beu3c"]
+
+[node name="Flashlight" type="Node2D" unique_id=1919540944 groups=["lights"]]
+script = ExtResource("1_beu3c")
+item_name = "Flashlight"
+icon = ExtResource("3_7ufd5")
+
+[node name="LightSprite" type="Sprite2D" parent="." unique_id=1350335161]
+texture = ExtResource("3_7ufd5")
+
+[node name="Light2D" type="PointLight2D" parent="LightSprite" unique_id=1420773775]
+visible = false
+y_sort_enabled = true
+position = Vector2(-6.1329827, 6.633084e-07)
+rotation = -3.1415927
+scale = Vector2(1.5918936, 2.0701568)
+color = Color(1, 1, 0.62352943, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("3_beu3c")
+offset = Vector2(26, 0)
+height = 20.0
+
+[node name="LightDetectionArea2D" type="Area2D" parent="LightSprite/Light2D" unique_id=1233469823]
+collision_layer = 768
+collision_mask = 768
+
+[node name="LightDetectionShape2D" type="CollisionPolygon2D" parent="LightSprite/Light2D/LightDetectionArea2D" unique_id=262043609]
+position = Vector2(5.098303, 0.08853316)
+scale = Vector2(1, 0.5172261)
+polygon = PackedVector2Array(0, 0, 45.034523, 7.3352275, 46.487247, 5.8681827, 47.455734, 3.1422014e-06, 46.487247, -5.501415, 45.034523, -6.9684596)

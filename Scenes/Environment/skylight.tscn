@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://b1nbpv0syjy4a"]
+
+[ext_resource type="Script" uid="uid://6onu68wj7sbb" path="res://Scripts/skylight.gd" id="1_ha08p"]
+[ext_resource type="Texture2D" uid="uid://b7lc1u0xdps2r" path="res://Assets/Art/Cave/skylight_column.png" id="1_oy77u"]
+[ext_resource type="Texture2D" uid="uid://qd8sgctnqygy" path="res://Assets/Art/Cave/skylight_circle.png" id="2_ha08p"]
+
+[sub_resource type="Gradient" id="Gradient_yo348"]
+offsets = PackedFloat32Array(0.009574468, 0.13723405, 0.21808511, 0.35, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.44347823, 0.44347823, 0.44347823, 1, 0.3406744, 0.3406744, 0.3406744, 1, 0.1460033, 0.1460033, 0.1460033, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_re4k7"]
+gradient = SubResource("Gradient_yo348")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6991453, 0.2752137)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u62ut"]
+
+[sub_resource type="Animation" id="Animation_6ydvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.76862746, 0.08235294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2DCIRCLE:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_oy77u"]
+resource_name = "light_idle"
+length = 4.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.6000001, 2.4, 3.6, 4.4),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0),
+"update": 0,
+"values": [1.2, 1.6, 1.8, 2.0, 1.8, 1.6, 1.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.76862746, 0.08235294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2DCIRCLE:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.6000001, 2.4, 3.6, 4.4),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0),
+"update": 0,
+"values": [0.5, 0.9, 1.1, 1.3, 1.1, 0.9, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha08p"]
+_data = {
+&"RESET": SubResource("Animation_6ydvw"),
+&"light_idle": SubResource("Animation_oy77u")
+}
+
+[node name="Skylight" type="Node2D" unique_id=1881674234]
+scale = Vector2(1.305, 1)
+script = ExtResource("1_ha08p")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1757346116]
+light_mask = 0
+z_index = 2
+scale = Vector2(0.7120001, 1.3452214)
+skew = -0.1570797
+color = Color(0.41568628, 0.59607846, 0.99215686, 1)
+energy = 1.19
+blend_mode = 2
+texture = ExtResource("1_oy77u")
+offset = Vector2(0, -110)
+texture_scale = 2.35
+height = 70.0
+
+[node name="PointLight2DCIRCLE" type="PointLight2D" parent="." unique_id=1973343192]
+rotation = -0.5235988
+scale = Vector2(14.51, 14.51)
+skew = -0.34906584
+color = Color(0.41514716, 0.5969517, 0.9935439, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_re4k7")
+texture_scale = 1.19
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1220568039]
+visible = false
+modulate = Color(1, 1, 0.76862746, 0.08235294)
+z_as_relative = false
+material = SubResource("ShaderMaterial_u62ut")
+position = Vector2(0.7662836, 6)
+scale = Vector2(1.637, 1.933)
+texture = ExtResource("2_ha08p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1092551444]
+libraries/ = SubResource("AnimationLibrary_ha08p")
+
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

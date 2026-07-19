@@ -18,25 +18,29 @@ config/icon="res://icon.svg"
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+Global1="*uid://cd1fpiiv06n4b"
+GameManager="*uid://3ag6encfd7pk"
 
 [dialogic]
 
 directories/dch_directory={
-"character": "res://Dialogue/Characters/Nicky.dch"
+"Nicky": "res://Dialogue/Characters/Nicky.dch"
 }
 directories/dtl_directory={
-"timeline": "res://Dialogue/Timelines/timeline.dtl"
+"BeingDrawing": "res://Dialogue/Timelines/Island/BeingDrawing.dtl",
+"HumanDrawing": "res://Dialogue/Timelines/Island/HumanDrawing.dtl",
+"SecretMessage": "res://Dialogue/Timelines/SecretMessage.dtl"
 }
 layout/style_directory={
 "": "res://Dialogue/Styles/test_style.tres",
 "test_style": "res://Dialogue/Styles/test_style.tres"
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.04
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
-text/autoadvance_per_character_delay=0.1
+text/autoadvance_per_character_delay=0
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.5
 animations/join_default_wait=true
@@ -49,7 +53,9 @@ choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
-text/autopauses={}
+text/autopauses={
+"\"?!.,;:\"": 0.1
+}
 audio/channel_defaults={
 "": {
 "audio_bus": "",
@@ -68,12 +74,38 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogue/Styles/test_style.tres"]
 layout/default_style="res://Dialogue/Styles/test_style.tres"
 variables={
+"BeingDrawingVars": {
+"being_drawing_counter": 0.0,
+"being_drawing_knowledge": false
+},
+"HotDogVars": {
+"hot_dog_counter": 0.0,
+"hot_dog_knowledge": false
+},
+"HumanDrawingVars": {
+"human_drawing_counter": 0.0,
+"human_drawing_knowledge": false
+},
 "response": ""
 }
+text/autoadvance_enabled=true
+text/autoadvance_fixed_delay=1.0
+text/autoadvance_per_word_delay=0
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+interactives=""
+opaques=""
+lights=""
+items=""
 
 [input]
 
@@ -120,7 +152,17 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
-converse={
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+item_extra={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
+]
+}
+test={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"location":0,"echo":false,"script":null)
 ]

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cryljpfaxlyr4" path="res://Scripts/boy.gd" id="1_rhh7w"]
 [ext_resource type="Texture2D" uid="uid://df17k8xnspmvv" path="res://Resources/boy/boy_idle/boy_idle.tres" id="2_82mfi"]
 [ext_resource type="Texture2D" uid="uid://dvng4assl0mkw" path="res://Resources/boy/boy_idle/boy_walk.tres" id="3_olg5v"]
+[ext_resource type="Script" uid="uid://k3wuif4ku2gs" path="res://Scripts/footsteps.gd" id="5_2sglr"]
+[ext_resource type="AudioStream" uid="uid://ddr4w61mgwtgi" path="res://Assets/SFX/footstep2.ogg" id="6_bije5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhh7w"]
 radius = 7.0000005
@@ -131,6 +133,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(6, 8)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_olg5v"]
 resource_name = "idle"
@@ -171,11 +185,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05),
 "update": 0,
-"values": [Vector2(6, 10), Vector2(6, 9), Vector2(6, 10), Vector2(6, 9)]
+"values": [Vector2(6, -20), Vector2(6, -21), Vector2(6, -20), Vector2(6, -21)]
 }
 
 [sub_resource type="Animation" id="Animation_2sglr"]
 resource_name = "walk"
+length = 2.0
 loop_mode = 1
 step = 0.2
 tracks/0/type = "value"
@@ -197,10 +212,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -209,10 +224,39 @@ tracks/2/path = NodePath("OnHandMarker:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1.04220935e-05, 1e-05, 1e-05, 1e-05, 1.4236969e-05, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "update": 0,
-"values": [Vector2(4, 9), Vector2(-9, 9), Vector2(-11, 8), Vector2(10, 8), Vector2(12, 7), Vector2(12, 7)]
+"values": [Vector2(4, -21), Vector2(-9, -21), Vector2(-11, -22), Vector2(-8, -23), Vector2(-10, -21), Vector2(-6, -21), Vector2(4, -22), Vector2(7, -21), Vector2(10, -22), Vector2(12, -23)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 70.0, 50.0, 70.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_call_footsteps"
+}, {
+"args": [],
+"method": &"_on_call_footsteps"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2sglr"]
@@ -222,16 +266,26 @@ _data = {
 &"walk": SubResource("Animation_2sglr")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2sglr"]
+radius = 72.02777
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sglr"]
+radius = 0.9090909
+height = 22.0
+
 [node name="Boy" type="CharacterBody2D" unique_id=1335609776]
 light_mask = 3
+y_sort_enabled = true
 script = ExtResource("1_rhh7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=670110074]
+visible = false
 position = Vector2(1.4210855e-14, -5.0000005)
 scale = Vector2(2.1999986, 1)
 shape = SubResource("CapsuleShape2D_rhh7w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1858496861]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_bije5")
 animation = &"idle"
 offset = Vector2(0, -30)
@@ -250,6 +304,7 @@ occluder = SubResource("OccluderPolygon2D_82mfi")
 occluder_light_mask = 3
 
 [node name="LightOccluderShadow" type="LightOccluder2D" parent="AnimatedSprite2D" unique_id=1906370219]
+visible = false
 occluder = SubResource("OccluderPolygon2D_olg5v")
 occluder_light_mask = 4
 
@@ -263,3 +318,27 @@ libraries/ = SubResource("AnimationLibrary_2sglr")
 
 [node name="OnHandMarker" type="Marker2D" parent="." unique_id=720323275]
 position = Vector2(6, 8)
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=2125902184]
+stream = ExtResource("6_bije5")
+script = ExtResource("5_2sglr")
+
+[node name="DetectionRadius" type="Area2D" parent="." unique_id=156916613]
+visible = false
+position = Vector2(0, -30)
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius" unique_id=177022649]
+shape = SubResource("CircleShape2D_2sglr")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1660881057]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1847748932]
+rotation = 1.5707964
+scale = Vector2(2.2, 1)
+shape = SubResource("CapsuleShape2D_2sglr")
+
+[node name="ItemContainer" type="Node2D" parent="." unique_id=181722764]

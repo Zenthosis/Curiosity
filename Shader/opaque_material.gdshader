@@ -1,0 +1,25 @@
+shader_type canvas_item;
+
+//uniform sampler2D texture_diffuse;
+uniform sampler2D texture_normal;
+uniform vec2 object_pos;
+uniform vec2 light_pos;
+
+void vertex() {
+}
+
+void fragment() {
+	//NORMAL_MAP = texture(NORMAL_TEXTURE, UV).rgb;
+}
+
+void light() {
+	// vec2 light_pos = LIGHT_VERTEX.xy; // xy of the emitter of the light
+	float cNdotL = max(0.0, dot(NORMAL, LIGHT_DIRECTION));
+
+	if (light_pos.y > object_pos.y){
+		LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY * cNdotL, LIGHT_COLOR.a);
+	}
+	if (light_pos.y <= object_pos.y){
+		LIGHT = vec4(0.,0.,0.,0.);
+	}
+}

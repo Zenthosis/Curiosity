@@ -1,0 +1,45 @@
+if {BeingDrawingVars.being_drawing_knowledge} == false:
+	label BeingFirstFind
+	Nicky: ... What?
+	Nicky: What is that?
+	Nicky: Some sort of plant? Maybe a palm tree, but...
+	Nicky: Wait, this was here this whole time? All us island kids used to sneak in here and play make believe and the teens made out behind the rocks and...
+	Nicky: THIS was here the whole time?!
+	set {BeingDrawingVars.being_drawing_knowledge} = true
+	jump HumanCombo
+elif {BeingDrawingVars.being_drawing_counter} > 0.0:
+	if {BeingDrawingVars.being_drawing_counter} == 1:
+		Nicky: Plant, animal, fungus...
+		Nicky: I could make the case for any of them.
+	elif {BeingDrawingVars.being_drawing_counter} == 2:
+		Nicky: ... I sure hope it's not an animal. Or if it is, I hope it went extinct.
+		Nicky: Please, God. Let it be extinct.
+	elif {BeingDrawingVars.being_drawing_counter} == 3:
+		Nicky: I'm getting hungry.
+	elif {BeingDrawingVars.being_drawing_counter} > 3:
+		Nothing else to see here. At least for now.
+		jump End
+
+label HumanCombo
+if {HumanDrawingVars.human_drawing_knowledge} == true:
+	if {BeingDrawingVars.being_drawing_counter} == 1:
+		label BeingHumanCombo1
+		Nicky: The human's kneeling in front of it.
+		Nicky: In awe? Or in terror?
+	if {BeingDrawingVars.being_drawing_counter} == 2:
+		label BeingHumanCombo2
+		Nicky: To think I spent so much time here as a kid, and THIS was right here the whole time.
+		Nicky: Ju Ann will go nuts when I tell her about this.
+	if {BeingDrawingVars.being_drawing_counter} == 3:
+		label BeingHumanCombo3
+		Nicky: I wonder if the person who drew this is still on the island.
+		Nicky: Don't think we have anyone THAT old still here but...
+		Nicky: Couldn't hurt to ask around. Probably.
+	elif {HumanDrawingVars.human_drawing_counter} > 3:
+		Nothing else to see here. For now, at least.
+else:
+	[wait time="1.0"]
+	There's something else on the left...
+
+label End
+set {BeingDrawingVars.being_drawing_counter} += 1:

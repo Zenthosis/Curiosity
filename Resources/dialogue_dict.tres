@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="dialog_dictionary_resource" format=3 uid="uid://bw1hvnqdxtb8h"]
+
+[ext_resource type="Script" uid="uid://bhoar68hcieev" path="res://Resources/dialogue_dictionary.gd" id="1_0yx4c"]
+
+[resource]
+script = ExtResource("1_0yx4c")
+dialog_dict = Dictionary[String, String]({
+"Being_Drawing": "BeingDrawing",
+"HOTDOG": "HotDog",
+"HiddenMsg1": "SecretMessage",
+"Human_Drawing": "HumanDrawing",
+"NormalMsg1": "SecretMessage",
+"SecretMsg1": "SecretMessage"
+})
+metadata/_custom_type_script = "uid://bhoar68hcieev"

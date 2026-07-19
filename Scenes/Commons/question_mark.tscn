@@ -1,0 +1,292 @@
+[gd_scene format=3 uid="uid://ljdy7kjod1a3"]
+
+[ext_resource type="Script" uid="uid://bdckvri8s5fl2" path="res://Scripts/notif.gd" id="1_n56ky"]
+[ext_resource type="Texture2D" uid="uid://bbgrkx748ay3a" path="res://Assets/Art/questionmark.png" id="2_n56ky"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8wvga"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3v4i"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qehbi"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyuhl"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8bcc"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veue2"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq0ar"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0115"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12wg7"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5ewn"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0x5d"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06nso"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2mu6"]
+atlas = ExtResource("2_n56ky")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12wg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3v4i")
+}],
+"loop": true,
+"name": &"questionmark_idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qehbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyuhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8bcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veue2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq0ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3v4i")
+}],
+"loop": true,
+"name": &"questionmark_in",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0115")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12wg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5ewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0x5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06nso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2mu6")
+}],
+"loop": true,
+"name": &"questionmark_out",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_p0115"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"questionmark_idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23.0]
+}
+
+[sub_resource type="Animation" id="Animation_qehbi"]
+resource_name = "question_mark_idle"
+length = 3.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"questionmark_idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [23.0, 21.0, 20.0, 20.0, 20.0, 21.0, 23.0, 25.0, 26.0, 26.0, 26.0, 25.0]
+}
+
+[sub_resource type="Animation" id="Animation_dyuhl"]
+resource_name = "question_mark_in"
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"questionmark_in"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_v8bcc"]
+resource_name = "question_mark_out"
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"questionmark_out"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v8bcc"]
+_data = {
+&"RESET": SubResource("Animation_p0115"),
+&"question_mark_idle": SubResource("Animation_qehbi"),
+&"question_mark_in": SubResource("Animation_dyuhl"),
+&"question_mark_out": SubResource("Animation_v8bcc")
+}
+
+[node name="QuestionMark" type="Node2D" unique_id=1512478301]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_n56ky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1700470913]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_8wvga")
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_12wg7")
+animation = &"questionmark_idle"
+offset = Vector2(0, 23)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569915466]
+libraries/ = SubResource("AnimationLibrary_v8bcc")
+autoplay = &"question_mark_in"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

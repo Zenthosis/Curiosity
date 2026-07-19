@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://oyqpfhkfpkjh"]
+
+[ext_resource type="Script" uid="uid://c5ktb3stknk33" path="res://Scripts/opaque_property.gd" id="1_xgjne"]
+
+[node name="opaque_property" type="Node" unique_id=1646873063 groups=["opaques"]]
+script = ExtResource("1_xgjne")
