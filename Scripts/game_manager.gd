@@ -2,7 +2,7 @@ extends Node
 
 @onready var boy: CharacterBody2D = get_tree().get_root().get_node("World/Environment/Boy")
 @export var dialog_dict: Resource = preload("res://Resources/dialogue_dict.tres")
-@onready var light: Node2D = get_tree().get_root().get_node("World/Environment/Boy/SecretTorch")
+@onready var light: Node2D = get_tree().get_root().get_node("World/Environment/Boy/Flashlight")
 @export var hidden_objects_visible: bool = false
 @export var secret_objects_visible: bool = false
 
@@ -19,8 +19,8 @@ signal light_position_sent(torch_position: Vector2)
 
 func _ready() -> void:
 	await get_tree().process_frame
+	Inventory._set_player(boy)
 
-	#torch.boy_can_move.connect(_can_move_boy)
 	boy.dialogue_triggered.connect(_on_dialogue_triggered)
 	Dialogic.timeline_started.connect(_dialogic_timeline_starter)
 	Dialogic.timeline_ended.connect(_dialogic_timeline_ender)
@@ -50,12 +50,12 @@ func _on_light_turned_on(light_type: LightTypes, light_on: bool) -> void:
 	if light_type == LightTypes.HIDDEN:
 		hidden_light_on = light_on
 		objects_revealed.emit(light_type, hidden_light_on) 
-		#print_debug("hidden")
+		print_debug("hidden")
 	if light_type == LightTypes.SECRET:
 		secret_light_on = light_on
 		#print_debug(light_type, " ", secret_light_on)
 		objects_revealed.emit(light_type, secret_light_on) 
-		#print_debug("secret")
+		print_debug("secret")
 		
 	if hidden_light_on or secret_light_on: ##if any light is on
 		light_is_on = true

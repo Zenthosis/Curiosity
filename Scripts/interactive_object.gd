@@ -5,8 +5,8 @@ extends Node2D
 @onready var notif_marker_2d: Marker2D = $NotifMarker2D
 @onready var interaction_area_2d: Area2D = $InteractionArea2D
 
-enum InteractionTypes {NORMAL, HIDDEN, SECRET}
-@export var interaction_type: InteractionTypes
+enum LightTypes {NORMAL, HIDDEN, SECRET}
+@export var light_type: LightTypes
 
 var q_mark: Node2D
 var i_circle: Node2D
@@ -17,20 +17,21 @@ signal object_found(target_object: Node2D, object_detected: bool)
 signal i_circle_entered(target_object: Node2D, interactabool: bool)
 
 func _set_interactions() -> void:
-	match interaction_type:
-		InteractionTypes.NORMAL:
+	match light_type:
+		LightTypes.NORMAL:
 			detection_area_2d.set_collision_mask_value(9, true)
 			detection_area_2d.monitoring = true
 			base_light_mask = 1+2+4
-		InteractionTypes.HIDDEN:
+		LightTypes.HIDDEN:
 			detection_area_2d.set_collision_mask_value(10, true)
 			detection_area_2d.monitoring = false
 			base_light_mask = 2
-		InteractionTypes.SECRET:
+		LightTypes.SECRET:
 			detection_area_2d.set_collision_mask_value(11, true)
 			detection_area_2d.monitoring = false
 			base_light_mask = 4
 	object_sprite.light_mask = base_light_mask
+	#print_debug(object_sprite.light_mask)
 	
 func _ready() -> void:
 	_set_interactions()
@@ -48,15 +49,14 @@ func _on_detection_area_2d_area_exited(_area: Area2D) -> void:
 	object_found.emit(target_object, false)
 	#print_debug (target_object," lost")
 
-func _on_objects_revealed(light_type: InteractionTypes, revealed: bool):
-	
-	if light_type == InteractionTypes.HIDDEN:
-		if interaction_type == InteractionTypes.HIDDEN:
-			detection_area_2d.monitoring = revealed
-	if light_type == InteractionTypes.SECRET:
-		print_debug(light_type," ", revealed)
-		#if interaction_type == InteractionTypes.SECRET:
-		detection_area_2d.monitoring = revealed
+func _on_objects_revealed(tool_light_type: LightTypes, revealed: bool):
+	match tool_light_type:
+		LightTypes.HIDDEN:
+			if light_type == LightTypes.HIDDEN:
+				detection_area_2d.monitoring = revealed
+		LightTypes.SECRET:
+			if light_type == LightTypes.SECRET:
+				detection_area_2d.monitoring = revealed
 			
 func _object_notify(activated: bool):
 	interaction_area_2d.monitoring = activated
@@ -100,16 +100,16 @@ func _on_light_position_received(light_pos: Vector2):
 	light_below_object = (light_pos.y - position.y) > 0
 	#if not light_below_object:
 	#match interaction_type:
-		#InteractionTypes.NORMAL:
+		#LightTypes.NORMAL:
 			#pass
 			##detection_area_2d.set_collision_mask_value(9, true)
 			##detection_area_2d.monitoring = true
 			##base_light_mask = 
-		#InteractionTypes.HIDDEN:
+		#LightTypes.HIDDEN:
 			#detection_area_2d.set_collision_mask_value(10, light_below_object)
 			#detection_area_2d.monitoring = light_below_object
 			##base_light_mask = 
-		#InteractionTypes.SECRET:
+		#LightTypes.SECRET:
 			#detection_area_2d.set_collision_mask_value(11, light_below_object)
 			#detection_area_2d.monitoring = light_below_object
 	pass

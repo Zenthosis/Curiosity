@@ -1,4 +1,5 @@
-extends Item
+#extends Item
+extends Node2D
 
 @onready var boy = $".."
 @onready var marker = $"../OnHandMarker"

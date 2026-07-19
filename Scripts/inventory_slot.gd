@@ -1,7 +1,11 @@
-extends Control
+extends Panel
 class_name InventorySlot
 
-@export var inventory_item_scene: PackedScene 
+
+@export var inventory_item_scene: = preload("uid://tgbtkrmy25vi")
+
+@export var item: Item
+@export var hint_item: Item = null
 
 
 func _ready() -> void:

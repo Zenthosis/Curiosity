@@ -9,15 +9,15 @@ radius = 50.01
 
 [node name="Torch" type="Node2D" unique_id=1919540944 groups=["lights"]]
 script = ExtResource("1_2pskx")
-item_name = "Torch"
-icon = ExtResource("2_qarvl")
+light_type = 1
 
 [node name="LightSprite" type="Sprite2D" parent="." unique_id=1350335161]
 texture = ExtResource("2_qarvl")
 
 [node name="Light2D" type="PointLight2D" parent="LightSprite" unique_id=1420773775]
+visible = false
 y_sort_enabled = true
-color = Color(1, 0.7058824, 0.21960784, 1)
+color = Color(1, 0.7647059, 0.21960784, 0.34117648)
 energy = 4.0
 range_item_cull_mask = 3
 shadow_enabled = true

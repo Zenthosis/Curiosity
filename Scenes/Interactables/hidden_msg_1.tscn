@@ -29,7 +29,7 @@ offset = Vector2(0, -60)
 flip_v = true
 
 [node name="interactive_object" parent="." unique_id=1673793516 instance=ExtResource("2_hyf5r")]
-interaction_type = 1
+light_type = 1
 
 [node name="NotifMarker2D" parent="interactive_object" index="0" unique_id=758833783]
 position = Vector2(-38, -45)

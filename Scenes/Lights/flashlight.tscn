@@ -6,8 +6,6 @@
 
 [node name="Flashlight" type="Node2D" unique_id=1919540944 groups=["lights"]]
 script = ExtResource("1_beu3c")
-item_name = "Flashlight"
-icon = ExtResource("3_7ufd5")
 
 [node name="LightSprite" type="Sprite2D" parent="." unique_id=1350335161]
 texture = ExtResource("3_7ufd5")
@@ -21,6 +19,7 @@ scale = Vector2(1.5918936, 2.0701568)
 color = Color(1, 1, 0.62352943, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
+shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 texture = ExtResource("3_beu3c")
 offset = Vector2(26, 0)
