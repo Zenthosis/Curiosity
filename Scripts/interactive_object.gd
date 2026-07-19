@@ -55,7 +55,7 @@ func _on_objects_revealed(tool_light_type: LightTypes, revealed: bool):
 			if light_type == LightTypes.HIDDEN:
 				detection_area_2d.monitoring = revealed
 		LightTypes.SECRET:
-			if light_type == LightTypes.SECRET:
+			if light_type == LightTypes.SECRET or light_type == LightTypes.HIDDEN:
 				detection_area_2d.monitoring = revealed
 			
 func _object_notify(activated: bool):

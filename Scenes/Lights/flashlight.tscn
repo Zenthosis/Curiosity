@@ -23,7 +23,7 @@ shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 texture = ExtResource("3_beu3c")
 offset = Vector2(26, 0)
-height = 20.0
+height = 15.0
 
 [node name="LightDetectionArea2D" type="Area2D" parent="LightSprite/Light2D" unique_id=1233469823]
 collision_layer = 768

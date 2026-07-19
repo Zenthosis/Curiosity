@@ -2,7 +2,7 @@ extends Node
 
 @onready var boy: CharacterBody2D = get_tree().get_root().get_node("World/Environment/Boy")
 @export var dialog_dict: Resource = preload("res://Resources/dialogue_dict.tres")
-@onready var light: Node2D = get_tree().get_root().get_node("World/Environment/Boy/Flashlight")
+@onready var light: Node2D = get_tree().get_root().get_node("World/Environment/Boy/SecretTorch")
 @export var hidden_objects_visible: bool = false
 @export var secret_objects_visible: bool = false
 

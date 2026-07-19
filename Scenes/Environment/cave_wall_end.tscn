@@ -22,7 +22,7 @@ z_as_relative = false
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1655959047]
-light_mask = 2
+light_mask = 7
 material = SubResource("ShaderMaterial_7s26r")
 texture = SubResource("CanvasTexture_wf6su")
 offset = Vector2(0, -30)
@@ -35,5 +35,6 @@ polygon = PackedVector2Array(87, 34, 79, -35, -74, -35, -81, 34)
 visible = false
 position = Vector2(0, 30)
 occluder = SubResource("OccluderPolygon2D_wf6su")
+occluder_light_mask = 7
 
 [node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("3_fequu")]

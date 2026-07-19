@@ -70,7 +70,7 @@ tile_map_data = PackedByteArray("AAAMAPn/AAAAAAAAAwARAPn/AAAAAAAAARAZAPv/AAAAAAA
 tile_set = SubResource("TileSet_pcysp")
 
 [node name="Boy" parent="Environment" unique_id=1335609776 instance=ExtResource("1_5yt03")]
-position = Vector2(209, 38)
+position = Vector2(186, 198)
 
 [node name="Camera2D" type="Camera2D" parent="Environment/Boy" unique_id=196406848]
 offset = Vector2(0, -30)
@@ -83,7 +83,7 @@ z_index = 8
 position = Vector2(-335, -75)
 
 [node name="Skylight" parent="Environment/CaveCeiling" unique_id=1881674234 instance=ExtResource("9_8ngks")]
-position = Vector2(56, 335)
+position = Vector2(51, 377)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=1666463175]
 color = Color(0.14872217, 0.13951513, 0.20405191, 1)

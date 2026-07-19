@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var _animation_player = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
-@onready var current_in_hand: Node2D = $Flashlight # when scaling this up, use a dictionary
+@onready var current_in_hand: Node2D = $SecretTorch # when scaling this up, use a dictionary
 @export var base_speed: float = 300.0#70.0
 @export var speed: float = base_speed
 @export var direction: Vector2
