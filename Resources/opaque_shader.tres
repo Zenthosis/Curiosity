@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://crli075ohjbum"]
+
+[ext_resource type="Shader" uid="uid://b8y5p0p6ankkd" path="res://Shader/opaque_material.gdshader" id="1_v7ksf"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_v7ksf")
+shader_parameter/object_pos = Vector2(0, 0)
+shader_parameter/light_pos = Vector2(0, 0)

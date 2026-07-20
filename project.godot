@@ -30,6 +30,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "BeingDrawing": "res://Dialogue/Timelines/Island/BeingDrawing.dtl",
 "HumanDrawing": "res://Dialogue/Timelines/Island/HumanDrawing.dtl",
+"Ladder": "res://Dialogue/Timelines/Ladder.dtl",
 "SecretMessage": "res://Dialogue/Timelines/SecretMessage.dtl"
 }
 layout/style_directory={
@@ -107,6 +108,7 @@ interactives=""
 opaques=""
 lights=""
 items=""
+sprites=""
 
 [input]
 

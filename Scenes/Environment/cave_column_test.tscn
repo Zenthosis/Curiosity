@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4ol0i3isvevj"]
 
 [ext_resource type="Shader" uid="uid://b8y5p0p6ankkd" path="res://Shader/opaque_material.gdshader" id="1_gpm2a"]
-[ext_resource type="Texture2D" uid="uid://dtu3mpgup3ca8" path="res://Assets/Art/Cave/cavecolumn.png" id="2_ioe5h"]
-[ext_resource type="Texture2D" uid="uid://b1756yhinel2e" path="res://Assets/Art/Cave/cavecolumn_normal.png" id="3_od38v"]
+[ext_resource type="Texture2D" uid="uid://dtu3mpgup3ca8" path="res://Assets/Art/Cave/Column/cavecolumn.png" id="2_ioe5h"]
+[ext_resource type="Texture2D" uid="uid://b1756yhinel2e" path="res://Assets/Art/Cave/Column/cavecolumn_normal.png" id="3_od38v"]
 [ext_resource type="PackedScene" uid="uid://b1nbpv0syjy4a" path="res://Scenes/Environment/skylight.tscn" id="4_4cv0t"]
 [ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="5_hmb7s"]
 

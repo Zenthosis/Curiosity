@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 //uniform sampler2D texture_diffuse;
-uniform sampler2D texture_normal;
+//uniform sampler2D texture_normal;
 uniform vec2 object_pos;
 uniform vec2 light_pos;
 
@@ -9,7 +9,6 @@ void vertex() {
 }
 
 void fragment() {
-	//NORMAL_MAP = texture(NORMAL_TEXTURE, UV).rgb;
 }
 
 void light() {

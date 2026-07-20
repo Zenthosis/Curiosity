@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c6atqxtova5ic"]
 
 [ext_resource type="Script" uid="uid://bqqwxsn4bqwlp" path="res://Scripts/light_tool.gd" id="1_2pskx"]
-[ext_resource type="Texture2D" uid="uid://bybtjn5u30ljo" path="res://Assets/Art/normal_flame.png" id="2_qarvl"]
-[ext_resource type="Texture2D" uid="uid://nekc2g1up3q0" path="res://Assets/Art/light_circle.png" id="3_m34x7"]
+[ext_resource type="Texture2D" uid="uid://bybtjn5u30ljo" path="res://Assets/Art/Lights/normal_flame.png" id="2_qarvl"]
+[ext_resource type="Texture2D" uid="uid://nekc2g1up3q0" path="res://Assets/Art/Lights/light_circle.png" id="3_m34x7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m34x7"]
 radius = 50.01

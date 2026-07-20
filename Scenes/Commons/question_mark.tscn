@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ljdy7kjod1a3"]
 
 [ext_resource type="Script" uid="uid://bdckvri8s5fl2" path="res://Scripts/notif.gd" id="1_n56ky"]
-[ext_resource type="Texture2D" uid="uid://bbgrkx748ay3a" path="res://Assets/Art/questionmark.png" id="2_n56ky"]
+[ext_resource type="Texture2D" uid="uid://bbgrkx748ay3a" path="res://Assets/Art/Interactables/questionmark.png" id="2_n56ky"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8wvga"]
 blend_mode = 1

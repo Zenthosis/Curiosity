@@ -1,6 +1,6 @@
 extends Node2D
 @onready var target_object : Node2D = $".."
-@onready var object_sprite : Node2D = $"../Sprite2D"
+#@onready var object_sprite : Sprite2D #= $"../Sprite2D"
 @onready var detection_area_2d: Area2D = $"../detectionArea2D"
 @onready var notif_marker_2d: Marker2D = $NotifMarker2D
 @onready var interaction_area_2d: Area2D = $InteractionArea2D
@@ -30,7 +30,9 @@ func _set_interactions() -> void:
 			detection_area_2d.set_collision_mask_value(11, true)
 			detection_area_2d.monitoring = false
 			base_light_mask = 4
-	object_sprite.light_mask = base_light_mask
+	for child in target_object.get_children():
+		if child is Sprite2D:
+			child.light_mask = base_light_mask
 	#print_debug(object_sprite.light_mask)
 	
 func _ready() -> void:

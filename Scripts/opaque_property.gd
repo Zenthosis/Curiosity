@@ -7,7 +7,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.light_position_sent.connect(_on_light_position_received)
-	mat.set_shader_parameter("object_pos", opaque_sprite.global_position)
+	mat.set_shader_parameter("object_pos", opaque_body.global_position)
 	pass
 	
 func _set_shader_param():

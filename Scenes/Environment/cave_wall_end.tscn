@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cc8so6d1uujs4"]
 
 [ext_resource type="Shader" uid="uid://b8y5p0p6ankkd" path="res://Shader/opaque_material.gdshader" id="1_1w77v"]
-[ext_resource type="Texture2D" uid="uid://dwfhmhnh127n4" path="res://Assets/Art/Cave/cave_wall_end.png" id="1_3ymlo"]
-[ext_resource type="Texture2D" uid="uid://cfykqvgnq0dki" path="res://Assets/Art/Cave/cave_wall_end_normal.png" id="2_wf6su"]
+[ext_resource type="Texture2D" uid="uid://dwfhmhnh127n4" path="res://Assets/Art/Cave/Walls/cave_wall_end.png" id="1_3ymlo"]
+[ext_resource type="Texture2D" uid="uid://cumoq43ub2udp" path="res://Assets/Art/Cave/Walls/cave_wall_end_normal.png" id="2_wf6su"]
 [ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="3_fequu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7s26r"]
@@ -24,16 +24,17 @@ y_sort_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1655959047]
 light_mask = 7
 material = SubResource("ShaderMaterial_7s26r")
+position = Vector2(-1, 46)
 texture = SubResource("CanvasTexture_wf6su")
-offset = Vector2(0, -30)
+offset = Vector2(0, -50)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1583937422]
 visible = false
-polygon = PackedVector2Array(87, 34, 79, -35, -74, -35, -81, 34)
+position = Vector2(-2, 28)
+polygon = PackedVector2Array(87, 34, 84, -67, -81, -67, -81, 34)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=744313638]
-visible = false
-position = Vector2(0, 30)
+position = Vector2(-1, 56)
 occluder = SubResource("OccluderPolygon2D_wf6su")
 occluder_light_mask = 7
 

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://duxrc0xp16ttj"]
+
+[ext_resource type="Material" uid="uid://crli075ohjbum" path="res://Resources/opaque_shader.tres" id="1_30gxr"]
+[ext_resource type="Texture2D" uid="uid://bfgjwblihb8gw" path="res://Assets/Art/Cave/Walls/cave_wall_2.png" id="2_30gxr"]
+[ext_resource type="Texture2D" uid="uid://bghv65f623x4w" path="res://Assets/Art/Cave/Walls/cave_wall_2_normal.png" id="3_52jvs"]
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="4_5bwm4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_02ww1"]
+diffuse_texture = ExtResource("2_30gxr")
+normal_texture = ExtResource("3_52jvs")
+
+[node name="CaveWall2" type="StaticBody2D" unique_id=1489364574]
+material = ExtResource("1_30gxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131553973]
+light_mask = 7
+y_sort_enabled = true
+material = ExtResource("1_30gxr")
+position = Vector2(0, 80)
+texture = SubResource("CanvasTexture_02ww1")
+offset = Vector2(0, -80)
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("4_5bwm4")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=964394829]
+visible = false
+polygon = PackedVector2Array(-110, 121, -63, 121, -47, 114, 17, 117, 29, 126, 112, 126, 138, 93, 119, 66, 114, -48, -119, -54, -135, 90)

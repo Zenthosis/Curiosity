@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b1nbpv0syjy4a"]
 
 [ext_resource type="Script" uid="uid://6onu68wj7sbb" path="res://Scripts/skylight.gd" id="1_ha08p"]
-[ext_resource type="Texture2D" uid="uid://b7lc1u0xdps2r" path="res://Assets/Art/Cave/skylight_column.png" id="1_oy77u"]
-[ext_resource type="Texture2D" uid="uid://qd8sgctnqygy" path="res://Assets/Art/Cave/skylight_circle.png" id="2_ha08p"]
+[ext_resource type="Texture2D" uid="uid://b7lc1u0xdps2r" path="res://Assets/Art/Lights/skylight_column.png" id="1_oy77u"]
+[ext_resource type="Texture2D" uid="uid://qd8sgctnqygy" path="res://Assets/Art/Lights/skylight_circle.png" id="2_ha08p"]
 
 [sub_resource type="Gradient" id="Gradient_yo348"]
 offsets = PackedFloat32Array(0.009574468, 0.13723405, 0.21808511, 0.35, 1)

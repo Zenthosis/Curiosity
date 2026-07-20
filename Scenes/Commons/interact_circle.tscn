@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7m4dyjk65ae3"]
 
 [ext_resource type="Script" uid="uid://bdckvri8s5fl2" path="res://Scripts/notif.gd" id="1_fog63"]
-[ext_resource type="Texture2D" uid="uid://dj3gwr5562bs1" path="res://Assets/Art/interactcircle.png" id="2_i8ab5"]
+[ext_resource type="Texture2D" uid="uid://dj3gwr5562bs1" path="res://Assets/Art/Interactables/interactcircle.png" id="2_i8ab5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l4nxo"]
 blend_mode = 1

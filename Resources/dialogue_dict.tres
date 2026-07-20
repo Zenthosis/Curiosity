@@ -9,6 +9,7 @@ dialog_dict = Dictionary[String, String]({
 "HOTDOG": "HotDog",
 "HiddenMsg1": "SecretMessage",
 "Human_Drawing": "HumanDrawing",
+"Ladder": "Ladder",
 "NormalMsg1": "SecretMessage",
 "SecretMsg1": "SecretMessage"
 })
