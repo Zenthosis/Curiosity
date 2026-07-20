@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Test Pixel Art"
+config/name="Curiosity"
 run/main_scene="uid://dbiovhiqxvlu3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"

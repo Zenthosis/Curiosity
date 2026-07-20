@@ -33,6 +33,7 @@ position = Vector2(-14, 52)
 polygon = PackedVector2Array(7, -11, 66, -18, 51, -85, -83, -85, -83, 5, -1, 5)
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=149444941]
+visible = false
 position = Vector2(0, 30)
 occluder = SubResource("OccluderPolygon2D_7qqns")
 
