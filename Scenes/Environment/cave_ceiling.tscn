@@ -13,7 +13,7 @@ position = Vector2(-18, 7)
 texture = ExtResource("1_ctqxt")
 
 [node name="Ladder" parent="." unique_id=316087085 instance=ExtResource("2_4exah")]
-position = Vector2(-70, 0)
+position = Vector2(-73, -25)
 
 [node name="CaveCeilingFrontLayer" type="Sprite2D" parent="." unique_id=615887423]
 light_mask = 0

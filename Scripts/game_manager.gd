@@ -1,20 +1,26 @@
 extends Node
 
 @onready var boy: CharacterBody2D = get_tree().get_root().get_node("World/Environment/Boy")
-@export var dialog_dict: Resource = preload("res://Resources/dialogue_dict.tres")
-@onready var light: Node2D = get_tree().get_root().get_node("World/Environment/Boy/Torch")
+@onready var cutscene_player: AnimationPlayer = get_tree().get_root().get_node("World/CutscenePlayer")
+@onready var current_light: Node2D
+@onready var ui_inventory: Node = get_tree().get_root().get_node("World/UILayer/Inventory")
+@onready var trans_cam: Camera2D = get_tree().get_root().get_node("World/TransitionCam")
+
+
 @export var hidden_objects_visible: bool = false
 @export var secret_objects_visible: bool = false
-
-enum LightTypes {NORMAL, HIDDEN, SECRET}
+@export var dialog_dict: Resource = preload("res://Resources/dialogue_dict.tres")
 
 var hidden_light_on: bool = false
 var secret_light_on: bool = false
-var light_is_on: bool = false
-var target_object_ID : String
+@export var light_is_on: bool = false
+var interact_object: Node2D
+var interact_object_ID : String
+var obj_interact_type: Global1.InteractTypes
 
 signal objects_revealed(reveal_type: String, visible: bool)
 signal light_position_sent(torch_position: Vector2)
+signal pickup_anim_finished()
 
 
 func _ready() -> void:
@@ -22,40 +28,70 @@ func _ready() -> void:
 	Inventory._set_player(boy)
 
 	boy.dialogue_triggered.connect(_on_dialogue_triggered)
+	boy.inventory_triggered.connect(_on_inventory_triggered)
 	Dialogic.timeline_started.connect(_dialogic_timeline_starter)
 	Dialogic.timeline_ended.connect(_dialogic_timeline_ender)
 	
-	for light_tool in get_tree().get_nodes_in_group("lights"):
-		light_tool.light_turned_on.connect(_on_light_turned_on)
+	boy.camera_switch_triggered.connect(_on_camera_switch_triggered)
+	
 	for interactive in get_tree().get_nodes_in_group("interactives"):
+		connect_interactive(interactive)
+	
+	trigger_cutscene("Intro1")
+
+func trigger_cutscene(cutscene_id:String):
+	boy._set_cutscene_mode(true)
+	cutscene_player.play(cutscene_id)
+
+func connect_light_tool(light_tool) -> void:
+		current_light = light_tool
+		light_tool.light_turned_on.connect(_on_light_turned_on)
+
+func connect_interactive(interactive: Node2D) -> void:
+		#print(interactive)
 		interactive.object_found.connect(_on_object_found)
 		interactive.i_circle_entered.connect(_on_i_circle_entered)
-	#for opaque in get_tree().get_nodes_in_group("opaques"):
-		#pass
-	
+
+func set_timeline_ID(obj_name: String):
+	interact_object_ID = obj_name
+
 func _on_dialogue_triggered() -> void:
-	var timeline_ID: String = dialog_dict._find_dialog(target_object_ID)
+	var timeline_ID: String = dialog_dict._find_dialog(interact_object_ID)
 	Dialogic.start(timeline_ID)
 
 func _dialogic_timeline_starter() -> void:
 	boy._interact_enabled(false)
-	boy._can_move(false)
+	boy._can_input(false)
 
 func _dialogic_timeline_ender() -> void:
-	boy._interact_enabled(true)
-	boy._can_move(true)
-	
+	match obj_interact_type:
+		Global1.InteractTypes.DIALOGUE_ONLY:
+			await get_tree().create_timer(0.5).timeout
+			boy._interact_enabled(true)
+		Global1.InteractTypes.ITEM_PICKUP:
+			_pickup_trigger()
+			await Inventory.inventory_updated
+			#await get_tree().create_timer(1).timeout
+		Global1.InteractTypes.CUTSCENE:
+			pass
+	boy._can_input(true)
 
-func _on_light_turned_on(light_type: LightTypes, light_on: bool) -> void:
-	if light_type == LightTypes.HIDDEN:
+func _on_camera_switch_triggered():
+	trans_cam.switch_camera(Vector2(0,0), 1.5)
+	
+func _on_inventory_triggered() -> void:
+	ui_inventory.visible = !ui_inventory.visible
+	
+func _on_light_turned_on(light_type: Global1.LightTypes, light_on: bool) -> void:
+	if light_type == Global1.LightTypes.HIDDEN:
 		hidden_light_on = light_on
 		objects_revealed.emit(light_type, hidden_light_on) 
-		print_debug("hidden")
-	if light_type == LightTypes.SECRET:
+		#print_debug("hidden")
+	if light_type == Global1.LightTypes.SECRET:
 		secret_light_on = light_on
 		#print_debug(light_type, " ", secret_light_on)
 		objects_revealed.emit(light_type, secret_light_on) 
-		print_debug("secret")
+		#print_debug("secret")
 		
 	if hidden_light_on or secret_light_on: ##if any light is on
 		light_is_on = true
@@ -66,19 +102,24 @@ func _on_light_turned_on(light_type: LightTypes, light_on: bool) -> void:
 	
 func _on_object_found(target_object: Node2D, found: bool) -> void:
 	#print_debug (target_object," found")
-	target_object.get_node("interactive_object")._object_notify(found)
+	target_object.get_node("interactive_property")._object_notify(found)
 	#print("target_object ", target_object, "triggered for notification ", found)
 	
-func _on_i_circle_entered(target_object: Node2D, interactabool: bool) -> void:
+func _on_i_circle_entered(target_object: Node2D, interactabool: bool, interact_behaviour: Global1.InteractTypes) -> void:
 	#print("on_i_circle_entered ", target_object, " ", interactabool)
 	boy._interact_enabled(interactabool)
-	target_object_ID = target_object.name
-	
+	interact_object = target_object
+	set_timeline_ID(target_object.name)
+	if interactabool == true: 
+		obj_interact_type = interact_behaviour
 
+func _pickup_trigger() -> void:
+	print("pickup triggered")
+	interact_object.get_node("pickup_property")._pickup_item()
+	await get_tree().create_timer(3).timeout
+	pickup_anim_finished.emit()
+	
 func _process(_delta: float) -> void:
 	if light_is_on == true:
-		light_position_sent.emit(light.global_position)
-		#opaque_material.set_shader_parameter("light_y_pos",torch.global_position.y)
-		#opaque_material.set_shader_parameter("opaque_body_y_pos",0)
-		#print_debug(opaque_material.get_shader_parameter("light_y_pos")-opaque_material.get_shader_parameter("opaque_body_y_pos"))
+		light_position_sent.emit(current_light.global_position)
 	pass

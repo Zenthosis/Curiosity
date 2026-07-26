@@ -5,22 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://csqk18vfveuw5" path="res://Assets/Art/Cave/Rock1Normal.png" id="4_4wnvo"]
 [ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="4_wv4pp"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_wv4pp"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_88pay"]
 diffuse_texture = ExtResource("3_r8xat")
 normal_texture = ExtResource("4_4wnvo")
 
 [node name="Rock1" type="StaticBody2D" unique_id=1489364574]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131553973]
-light_mask = 7
-y_sort_enabled = true
-material = ExtResource("2_e62ew")
-position = Vector2(0, 20)
-texture = SubResource("CanvasTexture_wv4pp")
-offset = Vector2(0, -20)
-
 [node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("4_wv4pp")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=964394829]
-position = Vector2(0, 1)
 polygon = PackedVector2Array(34, -11, 38, 0, 38, 21, 21, 33, 19, 34, -16, 34, -39, 23, -39, 12, -32, -11)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452055994]
+y_sort_enabled = true
+material = ExtResource("2_e62ew")
+texture = SubResource("CanvasTexture_88pay")

@@ -1,0 +1,5 @@
+Nicky: Owie Zowie
+Nicky: My head...
+Nicky: Where am I?
+Nicky: Time to walk around
+do GameManager.trigger_cutscene("Intro3")

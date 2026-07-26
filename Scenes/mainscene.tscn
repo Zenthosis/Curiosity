@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ca1bd2hdgc485" path="res://Scenes/boy.tscn" id="1_5yt03"]
 [ext_resource type="AudioStream" uid="uid://c3jlk8idqrsf7" path="res://Assets/SFX/Curiosity.mp3" id="1_8ngks"]
+[ext_resource type="Script" uid="uid://ch15cbpjljdx7" path="res://Scripts/gm_helper.gd" id="1_76hng"]
+[ext_resource type="PackedScene" uid="uid://fqjfhtu76elw" path="res://Scenes/inventory.tscn" id="1_xxieg"]
 [ext_resource type="Script" uid="uid://l5khdgu53ssg" path="res://Scripts/music_player.gd" id="2_lqdhn"]
 [ext_resource type="Texture2D" uid="uid://cbw1hd7217s20" path="res://Assets/Art/Cave/cave_tile_map.png" id="3_c5s60"]
 [ext_resource type="PackedScene" uid="uid://cc8so6d1uujs4" path="res://Scenes/Environment/cave_wall_end.tscn" id="5_gjgc6"]
@@ -12,7 +14,212 @@
 [ext_resource type="PackedScene" uid="uid://b1nbpv0syjy4a" path="res://Scenes/Environment/skylight.tscn" id="9_8ngks"]
 [ext_resource type="PackedScene" uid="uid://dfkbj6buo8q8a" path="res://Scenes/Environment/cave_wall_1.tscn" id="10_8ngks"]
 [ext_resource type="PackedScene" uid="uid://c5tg7bspaj1xg" path="res://Scenes/Environment/cave_ceiling.tscn" id="10_lqdhn"]
-[ext_resource type="PackedScene" uid="uid://c6atqxtova5ic" path="res://Scenes/Lights/torch.tscn" id="11_bvpmc"]
+[ext_resource type="Script" uid="uid://b2trpvxihqj3y" path="res://Scripts/camera.gd" id="12_1bo1k"]
+[ext_resource type="PackedScene" uid="uid://da1e74qs1qwfe" path="res://Scenes/Lights/flashlight_pickup.tscn" id="14_dijpm"]
+[ext_resource type="PackedScene" uid="uid://cav55lih05u77" path="res://Scenes/Lights/secret_torch_pickup.tscn" id="15_tf7l5"]
+[ext_resource type="PackedScene" uid="uid://k2k0neo10xcs" path="res://Scenes/Lights/torch_pickup.tscn" id="17_3swae"]
+[ext_resource type="PackedScene" uid="uid://cnhg7yyl8o42p" path="res://Scenes/torn_ladder.tscn" id="17_tf7l5"]
+[ext_resource type="PackedScene" uid="uid://sxo6w6nhperd" path="res://Scenes/Interactables/hidden_msg_1.tscn" id="18_3swae"]
+
+[sub_resource type="Animation" id="Animation_3swae"]
+resource_name = "xxx"
+length = 18.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectCam")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"make_current"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Environment/CanvasModulate:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.5, 6, 6.5, 7),
+"transitions": PackedFloat32Array(2.8473862e-05, 2.8473862e-05, 2.8473862e-05, 2.8473862e-05, 2.8473862e-05, 2.8473862e-05),
+"update": 0,
+"values": [Color(0.11764706, 0.10980392, 0.16078432, 1), Color(0, 0, 0, 1), Color(0.039215688, 0.03529412, 0.050980393, 1), Color(0.078431375, 0.07058824, 0.101960786, 1), Color(0.11764706, 0.105882354, 0.15294118, 1), Color(0.11764706, 0.10980392, 0.16078432, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionCam")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(0, 0), 3.5],
+"method": &"switch_camera"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameManagerHelper")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(17),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Intro1"],
+"method": &"dialog_caller"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_76hng"]
+resource_name = "Intro2"
+length = 12.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameManagerHelper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Intro2"],
+"method": &"dialog_caller"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Environment/Boy:boy_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1e-05),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hkskg"]
+resource_name = "Intro3"
+length = 10.5
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameManagerHelper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Intro3"],
+"method": &"dialog_caller"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Environment/Boy:boy_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1e-05),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Environment/TornLadder/detectionArea2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_44wyh"]
+resource_name = "Intro4"
+length = 2.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Environment/Boy:can_input")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Environment/Boy:can_move")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Environment/Boy:can_interact")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1bo1k"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bo1k"]
+_data = {
+&"Intro1": SubResource("Animation_3swae"),
+&"Intro2": SubResource("Animation_76hng"),
+&"Intro3": SubResource("Animation_hkskg"),
+&"Intro4": SubResource("Animation_44wyh"),
+&"RESET": SubResource("Animation_1bo1k")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqdhn"]
 texture = ExtResource("3_c5s60")
@@ -21,12 +228,8 @@ texture = ExtResource("3_c5s60")
 [sub_resource type="TileSet" id="TileSet_p00ao"]
 sources/0 = SubResource("TileSetAtlasSource_lqdhn")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lqdhn"]
-scenes/1/scene = ExtResource("5_lqdhn")
-
 [sub_resource type="TileSet" id="TileSet_dijpm"]
 physics_layer_0/collision_layer = 1
-sources/5 = SubResource("TileSetScenesCollectionSource_lqdhn")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c5s60"]
 resource_name = "MainWalls"
@@ -50,7 +253,18 @@ sources/4 = SubResource("TileSetScenesCollectionSource_bvpmc")
 
 [node name="World" type="Node2D" unique_id=1522241430]
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1540210529]
+[node name="GameManagerHelper" type="Node" parent="." unique_id=2073093744]
+script = ExtResource("1_76hng")
+
+[node name="CutscenePlayer" type="AnimationPlayer" parent="." unique_id=1442557918]
+libraries/ = SubResource("AnimationLibrary_1bo1k")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1635593577]
+
+[node name="Inventory" parent="UILayer" unique_id=1298701664 instance=ExtResource("1_xxieg")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1422212837]
 stream = ExtResource("1_8ngks")
 volume_db = -10.0
 script = ExtResource("2_lqdhn")
@@ -71,24 +285,50 @@ tile_set = SubResource("TileSet_dijpm")
 [node name="CaveBodyLayer" type="TileMapLayer" parent="Environment" unique_id=1633179502]
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAMAPn/AAAAAAAAAwD3//z/AAAAAAAAARABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgD0//r/AAAAAAAAARDs//v/AwAAAAAAARDc//X/AwAAAAAAAQDk//j/BAAAAAAAAQDn//r/BAAAAAAAAQDz/wQABAAAAAAAAQAGAPn/AAAAAAAAAQASAPn/AAAAAAAAARAiAPf/AAAAAAAABAAvAPb/AAAAAAAABADW//n/AAAAAAAABAA4APj/AAAAAAAABADV/xYAAAAAAAAABADl/yEAAAAAAAAABAD3/xcAAAAAAAAABAALACQAAAAAAAAABAAhABsAAAAAAAAABAA=")
+tile_map_data = PackedByteArray("AAAMAPn/AAAAAAAAAwABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgDs//v/AwAAAAAAARDc//X/AwAAAAAAAQDk//j/BAAAAAAAAQDn//r/BAAAAAAAAQDz/wQABAAAAAAAAQAGAPn/AAAAAAAAAQASAPn/AAAAAAAAARDW//n/AAAAAAAABAA4APj/AAAAAAAABADV/xYAAAAAAAAABADl/yEAAAAAAAAABAD3/xcAAAAAAAAABAALACQAAAAAAAAABAAhABsAAAAAAAAABAD5//f/AAAAAAAABADw//f/AAAAAAAABBAuAPf/AAAAAAAABAAiAPf/AAAAAAAABAAEAOX/AAAAAAAAAQAXAOX/AAAAAAAAARAcAOf/AAAAAAAAARD+/+f/AAAAAAAAAQALAOT/AAAAAAAAAwAPAOT/AAAAAAAAAwD6/+n/AAAAAAAAAQAgAOr/AAAAAAAAARA=")
 tile_set = SubResource("TileSet_pcysp")
 
 [node name="Boy" parent="Environment" unique_id=1335609776 instance=ExtResource("1_5yt03")]
-position = Vector2(882, 19)
+position = Vector2(-435, 125)
+base_speed = 70.0
+can_interact = true
 
-[node name="Camera2D" type="Camera2D" parent="Environment/Boy" unique_id=196406848]
+[node name="MainCam" type="Camera2D" parent="Environment/Boy" unique_id=196406848]
 offset = Vector2(0, -30)
-zoom = Vector2(3, 3)
-
-[node name="Torch" parent="Environment/Boy" unique_id=1919540944 instance=ExtResource("11_bvpmc")]
+zoom = Vector2(3.5, 3.5)
 
 [node name="CaveCeiling" parent="Environment" unique_id=55630341 instance=ExtResource("10_lqdhn")]
 z_index = 8
 position = Vector2(-408, -149)
 
 [node name="Skylight" parent="Environment/CaveCeiling" unique_id=1881674234 instance=ExtResource("9_8ngks")]
-position = Vector2(-16, 280)
+position = Vector2(-24, 269)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=1666463175]
-color = Color(0.14872217, 0.13951513, 0.20405191, 1)
+color = Color(0.11764706, 0.10980392, 0.16078432, 1)
+
+[node name="Flashlight" parent="Environment" unique_id=1835230014 instance=ExtResource("14_dijpm")]
+position = Vector2(-268, 47)
+
+[node name="Torch" parent="Environment" unique_id=456215686 instance=ExtResource("17_3swae")]
+position = Vector2(-119, 253)
+
+[node name="SecretTorch" parent="Environment" unique_id=367821123 instance=ExtResource("15_tf7l5")]
+position = Vector2(-412, 303)
+
+[node name="TornLadder" parent="Environment" unique_id=316087085 instance=ExtResource("17_tf7l5")]
+position = Vector2(-476, 90)
+
+[node name="HiddenMsg1" parent="Environment" unique_id=412037829 instance=ExtResource("18_3swae")]
+position = Vector2(142, -31)
+
+[node name="ObjectCam" type="Camera2D" parent="." unique_id=1710511851]
+zoom = Vector2(3.5, 3.5)
+
+[node name="TransitionCam" type="Camera2D" parent="." unique_id=1017544962]
+zoom = Vector2(3.5, 3.5)
+script = ExtResource("12_1bo1k")
+
+[editable path="Environment/TornLadder"]
+[editable path="Environment/TornLadder/interactive_property"]
+[editable path="Environment/TornLadder/detectionArea2D"]

@@ -5,12 +5,14 @@
 [resource]
 script = ExtResource("1_0yx4c")
 dialog_dict = Dictionary[String, String]({
-"Being_Drawing": "BeingDrawing",
-"HOTDOG": "HotDog",
-"HiddenMsg1": "SecretMessage",
-"Human_Drawing": "HumanDrawing",
+"Flashlight": "Flashlight",
+"HiddenMsg1": "HiddenMsg1",
+"Intro1": "Intro1",
+"Intro2": "Intro2",
+"Intro3": "Intro3",
 "Ladder": "Ladder",
-"NormalMsg1": "SecretMessage",
-"SecretMsg1": "SecretMessage"
+"SecretTorch": "SecretTorch",
+"Torch": "torch",
+"TornLadder": "TornLadder"
 })
 metadata/_custom_type_script = "uid://bhoar68hcieev"

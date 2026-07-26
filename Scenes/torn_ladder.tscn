@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cnhg7yyl8o42p"]
+
+[ext_resource type="Texture2D" uid="uid://bomfcscwtrcm8" path="res://Assets/Art/Interactables/ladder_torn_part.png" id="2_u83u1"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="3_6jjj3"]
+[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="4_amf52"]
+
+[node name="TornLadder" type="Node2D" unique_id=316087085]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1199661279 groups=["sprites"]]
+rotation = 0.7225663
+texture = ExtResource("2_u83u1")
+
+[node name="interactive_property" parent="." unique_id=1673793516 instance=ExtResource("3_6jjj3")]
+
+[node name="NotifMarker2D" parent="interactive_property" index="0" unique_id=758833783]
+position = Vector2(0, -67)
+
+[node name="InteractionArea2D" parent="interactive_property" index="1" unique_id=64458683]
+position = Vector2(0, 0)
+
+[node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("4_amf52")]
+
+[editable path="interactive_property"]
+[editable path="detectionArea2D"]

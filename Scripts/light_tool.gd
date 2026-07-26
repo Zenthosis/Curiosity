@@ -47,14 +47,14 @@ func _process(_delta: float) -> void:
 	if boy.velocity != Vector2.ZERO:
 		if boy.direction_facing.x < 0: 
 			#scale.x = 1
-			#base_rotation = 0
-			#light_sprite.rotation_degrees = 0
-			scale.x=1
+			base_rotation = 0
+			light_sprite.rotation_degrees = 0
+			#scale.x=1
 		elif boy.direction_facing.x > 0: 
 			#
-			#base_rotation = 180
-			#light_sprite.rotation_degrees = 180
-			scale.x = -1
+			base_rotation = 180
+			light_sprite.rotation_degrees = 180
+			#scale.x = -1
 		
 	if light_on == true:
 		#light_position_sent.emit(position)

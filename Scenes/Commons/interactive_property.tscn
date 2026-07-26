@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://bjv2q0g6255dm"]
 
-[ext_resource type="Script" uid="uid://vr7ihdsqdhpg" path="res://Scripts/interactive_object.gd" id="1_sd40i"]
+[ext_resource type="Script" uid="uid://vr7ihdsqdhpg" path="res://Scripts/interactive_property.gd" id="1_sd40i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sd40i"]
 radius = 8.0
 height = 48.0
 
-[node name="interactive_object" type="Node2D" unique_id=1673793516 groups=["interactives"]]
+[node name="interactive_object" type="Node2D" unique_id=1398313704 groups=["interactives"]]
 script = ExtResource("1_sd40i")
 
 [node name="NotifMarker2D" type="Marker2D" parent="." unique_id=758833783]
 position = Vector2(0, -20)
 
 [node name="InteractionArea2D" type="Area2D" parent="." unique_id=64458683]
-visible = false
 position = Vector2(0, 20)
 collision_layer = 0
 collision_mask = 2

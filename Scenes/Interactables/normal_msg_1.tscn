@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dg161xf0tjf7x" path="res://Assets/Art/Interactables/HiddenMsg1..png" id="1_l3kex"]
 [ext_resource type="Texture2D" uid="uid://61dj6qn8lkc1" path="res://Assets/Art/Interactables/SecretMsg1_normal.png" id="2_xu4ft"]
-[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_object.tscn" id="3_e8uoi"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="3_e8uoi"]
 [ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="4_yogcl"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48d0g"]

@@ -1,0 +1,2 @@
+Nicky: !!! Oh shit, creepy white stuff!
+do GameManager.trigger_cutscene("Intro4")

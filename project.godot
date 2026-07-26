@@ -29,9 +29,17 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "BeingDrawing": "res://Dialogue/Timelines/Island/BeingDrawing.dtl",
+"Flashlight": "res://Dialogue/Timelines/Flashlight.dtl",
+"HiddenMsg1": "res://Dialogue/Timelines/HiddenMsg1.dtl",
 "HumanDrawing": "res://Dialogue/Timelines/Island/HumanDrawing.dtl",
+"Intro1": "res://Dialogue/Timelines/Intro1.dtl",
+"Intro2": "res://Dialogue/Timelines/Intro2.dtl",
+"Intro3": "res://Dialogue/Timelines/Intro3.dtl",
 "Ladder": "res://Dialogue/Timelines/Ladder.dtl",
-"SecretMessage": "res://Dialogue/Timelines/SecretMessage.dtl"
+"SecretMessage": "res://Dialogue/Timelines/SecretMessage.dtl",
+"SecretTorch": "res://Dialogue/Timelines/SecretTorch.dtl",
+"TornLadder": "res://Dialogue/Timelines/TornLadder.dtl",
+"torch": "res://Dialogue/Timelines/Torch.dtl"
 }
 layout/style_directory={
 "": "res://Dialogue/Styles/test_style.tres",
@@ -168,6 +176,21 @@ item_extra={
 test={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"location":0,"echo":false,"script":null)
+]
+}
+inventory={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
+]
+}
+inv_scroll_down={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(746, 19),"global_position":Vector2(758, 79),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+inv_scroll_up={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(634, 15),"global_position":Vector2(646, 75),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 

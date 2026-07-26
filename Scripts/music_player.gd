@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +10,7 @@ func _input(_event: InputEvent) -> void:
 		if not playing:
 			play()
 		else:
-			play()
+			pass
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

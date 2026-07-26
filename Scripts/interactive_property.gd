@@ -1,12 +1,12 @@
-extends Node2D
+extends Node
 @onready var target_object : Node2D = $".."
 #@onready var object_sprite : Sprite2D #= $"../Sprite2D"
 @onready var detection_area_2d: Area2D = $"../detectionArea2D"
 @onready var notif_marker_2d: Marker2D = $NotifMarker2D
 @onready var interaction_area_2d: Area2D = $InteractionArea2D
 
-enum LightTypes {NORMAL, HIDDEN, SECRET}
-@export var light_type: LightTypes
+@export var light_type: Global1.LightTypes
+@export var interact_type: Global1.InteractTypes
 
 var q_mark: Node2D
 var i_circle: Node2D
@@ -14,19 +14,19 @@ var light_below_object: bool = true
 var base_light_mask: int
 
 signal object_found(target_object: Node2D, object_detected: bool)
-signal i_circle_entered(target_object: Node2D, interactabool: bool)
+signal i_circle_entered(target_object: Node2D, interactabool: bool, interact_type: Global1.InteractTypes)
 
-func _set_interactions() -> void:
+func _set_light_behaviour() -> void:
 	match light_type:
-		LightTypes.NORMAL:
+		Global1.LightTypes.NORMAL:
 			detection_area_2d.set_collision_mask_value(9, true)
 			detection_area_2d.monitoring = true
 			base_light_mask = 1+2+4
-		LightTypes.HIDDEN:
+		Global1.LightTypes.HIDDEN:
 			detection_area_2d.set_collision_mask_value(10, true)
 			detection_area_2d.monitoring = false
 			base_light_mask = 2
-		LightTypes.SECRET:
+		Global1.LightTypes.SECRET:
 			detection_area_2d.set_collision_mask_value(11, true)
 			detection_area_2d.monitoring = false
 			base_light_mask = 4
@@ -35,9 +35,21 @@ func _set_interactions() -> void:
 			child.light_mask = base_light_mask
 	#print_debug(object_sprite.light_mask)
 	
+func _set_interactions() -> void:
+	match interact_type:
+		Global1.InteractTypes.ITEM_PICKUP:
+			pass
+		Global1.InteractTypes.ITEM_USE:
+			pass
+		Global1.InteractTypes.DIALOGUE_ONLY:
+			pass
+		Global1.InteractTypes.CUTSCENE:
+			pass
+	
 func _ready() -> void:
+	_set_light_behaviour()
 	_set_interactions()
-	GameManager.light_position_sent.connect(_on_light_position_received)
+	#GameManager.light_position_sent.connect(_on_light_position_received)
 	GameManager.objects_revealed.connect(_on_objects_revealed)
 	detection_area_2d.area_entered.connect(_on_detection_area_2d_area_entered)
 	detection_area_2d.area_exited.connect(_on_detection_area_2d_area_exited)
@@ -51,19 +63,21 @@ func _on_detection_area_2d_area_exited(_area: Area2D) -> void:
 	object_found.emit(target_object, false)
 	#print_debug (target_object," lost")
 
-func _on_objects_revealed(tool_light_type: LightTypes, revealed: bool):
+func _on_objects_revealed(tool_light_type: Global1.LightTypes, revealed: bool):
 	match tool_light_type:
-		LightTypes.HIDDEN:
-			if light_type == LightTypes.HIDDEN:
+		Global1.LightTypes.HIDDEN:
+			if light_type == Global1.LightTypes.HIDDEN:
 				detection_area_2d.monitoring = revealed
-		LightTypes.SECRET:
-			if light_type == LightTypes.SECRET or light_type == LightTypes.HIDDEN:
+		Global1.LightTypes.SECRET:
+			if light_type == Global1.LightTypes.SECRET or light_type == Global1.LightTypes.HIDDEN:
 				detection_area_2d.monitoring = revealed
 			
 func _object_notify(activated: bool):
 	interaction_area_2d.monitoring = activated
+	#
 	if activated == true:
 		if not has_node("QuestionMark"):
+			#print_debug("test object notify")
 			q_mark = Global1.q_mark_scene.instantiate()
 			add_child(q_mark)
 			q_mark.position = notif_marker_2d.position
@@ -90,16 +104,16 @@ func _object_notify(activated: bool):
 		
 
 func _on_interaction_area_2d_area_entered(_area: Area2D) -> void:
-	i_circle_entered.emit(target_object, true)
-	#print_debug("i_circle_entered", target_object)
+	i_circle_entered.emit(target_object, true, interact_type)
+	#print_debug("i_circle_entered ", target_object)
 	
 func _on_interaction_area_2d_area_exited(_area: Area2D) -> void:
-	i_circle_entered.emit(target_object, false)
-	#print_debug("i_circle_exited", target_object)
+	i_circle_entered.emit(target_object, false, interact_type)
+	#print_debug("i_circle_exited ", target_object)
 	
 
-func _on_light_position_received(light_pos: Vector2):
-	light_below_object = (light_pos.y - position.y) > 0
+func _on_light_position_received(_light_pos: Vector2):
+	#light_below_object = (light_pos.y - position.y) > 0
 	#if not light_below_object:
 	#match interaction_type:
 		#LightTypes.NORMAL:

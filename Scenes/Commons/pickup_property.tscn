@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bdcu0pxibf7jq"]
+
+[ext_resource type="Script" uid="uid://dtlv56ywtbnw0" path="res://Scripts/pickup_property.gd" id="1_q1r3a"]
+[ext_resource type="Texture2D" uid="uid://bybtjn5u30ljo" path="res://Assets/Art/Lights/normal_flame.png" id="2_nnjo8"]
+
+[node name="pickup_property" type="Node" unique_id=1038028029]
+script = ExtResource("1_q1r3a")
+item_name = "Torch test"
+icon = ExtResource("2_nnjo8")
+scene_path = "res://Scenes/Lights/test_torch.tscn"

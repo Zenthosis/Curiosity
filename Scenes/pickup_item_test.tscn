@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cpcww0rw2r4fv"]
 
-[ext_resource type="Script" uid="uid://dtlv56ywtbnw0" path="res://Scripts/pickup_item.gd" id="1_3sljy"]
+[ext_resource type="Script" uid="uid://dtlv56ywtbnw0" path="res://Scripts/pickup_property.gd" id="1_3sljy"]
 [ext_resource type="Texture2D" uid="uid://bxaw5r0l8pnth" path="res://Assets/Art/Boy/flashlight.png" id="2_ifydv"]
-[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_object.tscn" id="3_67ip2"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="3_67ip2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35wag"]
 radius = 36.013885
