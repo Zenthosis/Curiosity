@@ -6,7 +6,7 @@
 radius = 8.0
 height = 48.0
 
-[node name="interactive_object" type="Node2D" unique_id=1398313704 groups=["interactives"]]
+[node name="interactive_property" type="Node2D" unique_id=1398313704 groups=["interactives"]]
 script = ExtResource("1_sd40i")
 
 [node name="NotifMarker2D" type="Marker2D" parent="." unique_id=758833783]

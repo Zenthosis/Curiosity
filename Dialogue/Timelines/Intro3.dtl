@@ -1,2 +1,4 @@
 Nicky: !!! Oh shit, creepy white stuff!
-do GameManager.trigger_cutscene("Intro4")
+[wait time="1.5"]
+do GameManager.change_boy_input_mode(true)
+do GameManager.change_boy_move_mode(true)

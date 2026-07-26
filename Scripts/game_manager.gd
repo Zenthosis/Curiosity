@@ -37,7 +37,7 @@ func _ready() -> void:
 	for interactive in get_tree().get_nodes_in_group("interactives"):
 		connect_interactive(interactive)
 	
-	trigger_cutscene("Intro1")
+	#trigger_cutscene("Intro1")
 
 func trigger_cutscene(cutscene_id:String):
 	boy._set_cutscene_mode(true)
@@ -52,6 +52,9 @@ func connect_interactive(interactive: Node2D) -> void:
 		interactive.object_found.connect(_on_object_found)
 		interactive.i_circle_entered.connect(_on_i_circle_entered)
 
+func set_interact_type(type: Global1.InteractTypes):
+	obj_interact_type = type
+	
 func set_timeline_ID(obj_name: String):
 	interact_object_ID = obj_name
 
@@ -60,22 +63,37 @@ func _on_dialogue_triggered() -> void:
 	Dialogic.start(timeline_ID)
 
 func _dialogic_timeline_starter() -> void:
-	boy._interact_enabled(false)
-	boy._can_input(false)
+	change_boy_input_mode(false)
+	change_boy_interact_mode(false)
+	change_boy_move_mode(false)
 
 func _dialogic_timeline_ender() -> void:
 	match obj_interact_type:
 		Global1.InteractTypes.DIALOGUE_ONLY:
 			await get_tree().create_timer(0.5).timeout
-			boy._interact_enabled(true)
+			change_boy_input_mode(true)
+			change_boy_interact_mode(true)
+			change_boy_move_mode(true)
 		Global1.InteractTypes.ITEM_PICKUP:
 			_pickup_trigger()
 			await Inventory.inventory_updated
-			#await get_tree().create_timer(1).timeout
+			change_boy_input_mode(true)
+			change_boy_move_mode(true)
 		Global1.InteractTypes.CUTSCENE:
 			pass
-	boy._can_input(true)
+		#Global1.InteractTypes.SECRET_PHASE:
+		#	pass
+	#boy._can_input(true)
 
+func change_boy_input_mode(inputabool: bool):
+	boy._can_input(inputabool)
+
+func change_boy_move_mode(movabool: bool):
+	boy._can_move(movabool)
+	
+func change_boy_interact_mode(interactabool: bool):
+	boy._can_interact(interactabool)
+	
 func _on_camera_switch_triggered():
 	trans_cam.switch_camera(Vector2(0,0), 1.5)
 	
@@ -87,7 +105,7 @@ func _on_light_turned_on(light_type: Global1.LightTypes, light_on: bool) -> void
 		hidden_light_on = light_on
 		objects_revealed.emit(light_type, hidden_light_on) 
 		#print_debug("hidden")
-	if light_type == Global1.LightTypes.SECRET:
+	if light_type == Global1.LightTypes.SECRET: #or light_type == Global1.LightTypes.SECRET_PHASE:
 		secret_light_on = light_on
 		#print_debug(light_type, " ", secret_light_on)
 		objects_revealed.emit(light_type, secret_light_on) 
@@ -107,7 +125,7 @@ func _on_object_found(target_object: Node2D, found: bool) -> void:
 	
 func _on_i_circle_entered(target_object: Node2D, interactabool: bool, interact_behaviour: Global1.InteractTypes) -> void:
 	#print("on_i_circle_entered ", target_object, " ", interactabool)
-	boy._interact_enabled(interactabool)
+	change_boy_interact_mode(interactabool)
 	interact_object = target_object
 	set_timeline_ID(target_object.name)
 	if interactabool == true: 

@@ -65,7 +65,7 @@ func get_input():
 			
 func _set_cutscene_mode(scene_bool):
 	_can_input(!scene_bool)
-	_interact_enabled(!scene_bool)
+	_can_interact(!scene_bool)
 	
 func _can_input(inputabool: bool):
 	can_input = inputabool
@@ -74,7 +74,7 @@ func _can_input(inputabool: bool):
 func _can_move(movabool: bool):
 	can_move = movabool
 	
-func _interact_enabled(enabool: bool) -> void:
+func _can_interact(enabool: bool) -> void:
 	can_interact = enabool
 	
 func animation_handler():

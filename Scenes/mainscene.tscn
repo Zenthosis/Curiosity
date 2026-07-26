@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://4o8s5p2icnw8" path="res://Scenes/Environment/rock_1.tscn" id="8_p00ao"]
 [ext_resource type="PackedScene" uid="uid://b1nbpv0syjy4a" path="res://Scenes/Environment/skylight.tscn" id="9_8ngks"]
 [ext_resource type="PackedScene" uid="uid://dfkbj6buo8q8a" path="res://Scenes/Environment/cave_wall_1.tscn" id="10_8ngks"]
+[ext_resource type="PackedScene" uid="uid://biujn535cm6mb" path="res://Scenes/Interactables/secret_rock.tscn" id="10_hkskg"]
 [ext_resource type="PackedScene" uid="uid://c5tg7bspaj1xg" path="res://Scenes/Environment/cave_ceiling.tscn" id="10_lqdhn"]
 [ext_resource type="Script" uid="uid://b2trpvxihqj3y" path="res://Scripts/camera.gd" id="12_1bo1k"]
 [ext_resource type="PackedScene" uid="uid://da1e74qs1qwfe" path="res://Scenes/Lights/flashlight_pickup.tscn" id="14_dijpm"]
@@ -72,7 +73,7 @@ tracks/3/path = NodePath("GameManagerHelper")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(17),
+"times": PackedFloat32Array(16),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["Intro1"],
@@ -113,7 +114,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_hkskg"]
 resource_name = "Intro3"
-length = 10.5
+length = 20.0
 step = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -153,47 +154,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-
-[sub_resource type="Animation" id="Animation_44wyh"]
-resource_name = "Intro4"
-length = 2.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Environment/Boy:can_input")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Environment/Boy:can_move")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Environment/Boy:can_interact")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
@@ -201,7 +161,7 @@ tracks/3/path = NodePath("MusicPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(18.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -217,7 +177,6 @@ _data = {
 &"Intro1": SubResource("Animation_3swae"),
 &"Intro2": SubResource("Animation_76hng"),
 &"Intro3": SubResource("Animation_hkskg"),
-&"Intro4": SubResource("Animation_44wyh"),
 &"RESET": SubResource("Animation_1bo1k")
 }
 
@@ -238,6 +197,10 @@ scenes/2/scene = ExtResource("5_lqdhn")
 scenes/3/scene = ExtResource("5_gjgc6")
 scenes/4/scene = ExtResource("7_bvpmc")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_44wyh"]
+resource_name = "Interactives"
+scenes/2/scene = ExtResource("10_hkskg")
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_p00ao"]
 resource_name = "Non-opaque walls"
 scenes/1/scene = ExtResource("7_lqdhn")
@@ -250,6 +213,7 @@ scenes/1/scene = ExtResource("8_p00ao")
 sources/0 = SubResource("TileSetScenesCollectionSource_c5s60")
 sources/3 = SubResource("TileSetScenesCollectionSource_p00ao")
 sources/4 = SubResource("TileSetScenesCollectionSource_bvpmc")
+sources/1 = SubResource("TileSetScenesCollectionSource_44wyh")
 
 [node name="World" type="Node2D" unique_id=1522241430]
 
@@ -285,12 +249,12 @@ tile_set = SubResource("TileSet_dijpm")
 [node name="CaveBodyLayer" type="TileMapLayer" parent="Environment" unique_id=1633179502]
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAMAPn/AAAAAAAAAwABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgDs//v/AwAAAAAAARDc//X/AwAAAAAAAQDk//j/BAAAAAAAAQDn//r/BAAAAAAAAQDz/wQABAAAAAAAAQAGAPn/AAAAAAAAAQASAPn/AAAAAAAAARDW//n/AAAAAAAABAA4APj/AAAAAAAABADV/xYAAAAAAAAABADl/yEAAAAAAAAABAD3/xcAAAAAAAAABAALACQAAAAAAAAABAAhABsAAAAAAAAABAD5//f/AAAAAAAABADw//f/AAAAAAAABBAuAPf/AAAAAAAABAAiAPf/AAAAAAAABAAEAOX/AAAAAAAAAQAXAOX/AAAAAAAAARAcAOf/AAAAAAAAARD+/+f/AAAAAAAAAQALAOT/AAAAAAAAAwAPAOT/AAAAAAAAAwD6/+n/AAAAAAAAAQAgAOr/AAAAAAAAARA=")
+tile_map_data = PackedByteArray("AAAMAPn/AAAAAAAAAwABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgDz/wQABAAAAAAAAQAGAPn/AAAAAAAAAQASAPn/AAAAAAAAARA4APj/AAAAAAAABADV/xYAAAAAAAAABADl/yEAAAAAAAAABAD3/xcAAAAAAAAABAALACQAAAAAAAAABAAhABsAAAAAAAAABAD5//f/AAAAAAAABADw//f/AAAAAAAABBAuAPf/AAAAAAAABAAiAPf/AAAAAAAABAAEAOX/AAAAAAAAAQAXAOX/AAAAAAAAARAcAOf/AAAAAAAAARD+/+f/AAAAAAAAAQALAOT/AAAAAAAAAwAPAOT/AAAAAAAAAwD6/+n/AAAAAAAAAQAgAOr/AAAAAAAAARAIAAUAAQAAAAAAAQDn//v/AQAAAAAAAgDr//z/AAAAAAAAAhDg//X/AwAAAAAAAQDY//v/AAAAAAAABAA=")
 tile_set = SubResource("TileSet_pcysp")
 
 [node name="Boy" parent="Environment" unique_id=1335609776 instance=ExtResource("1_5yt03")]
 position = Vector2(-435, 125)
-base_speed = 70.0
+base_speed = 300.0
 can_interact = true
 
 [node name="MainCam" type="Camera2D" parent="Environment/Boy" unique_id=196406848]
@@ -305,6 +269,7 @@ position = Vector2(-408, -149)
 position = Vector2(-24, 269)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=1666463175]
+visible = false
 color = Color(0.11764706, 0.10980392, 0.16078432, 1)
 
 [node name="Flashlight" parent="Environment" unique_id=1835230014 instance=ExtResource("14_dijpm")]

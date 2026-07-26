@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bbdqjw7afqh3d" path="res://Assets/Art/Interactables/ladder.png" id="1_75hc7"]
 [ext_resource type="Script" uid="uid://ckpkm4gf2ko8b" path="res://Scripts/ladder.gd" id="1_fnw1j"]
 [ext_resource type="Texture2D" uid="uid://bomfcscwtrcm8" path="res://Assets/Art/Interactables/ladder_torn_part.png" id="3_cve4p"]
-[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="3_vwlf3"]
-[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="4_cve4p"]
 
 [sub_resource type="Animation" id="Animation_fnw1j"]
 length = 0.001
@@ -120,20 +118,3 @@ texture = ExtResource("1_75hc7")
 [node name="Ladder9" type="Sprite2D" parent="Ladder1/Ladder2/Ladder3/Ladder4/Ladder5/Ladder6/Ladder7/Ladder8" unique_id=2092378680 groups=["sprites"]]
 position = Vector2(0, 10)
 texture = ExtResource("3_cve4p")
-
-[node name="interactive_property" parent="." unique_id=1673793516 instance=ExtResource("3_vwlf3")]
-
-[node name="NotifMarker2D" parent="interactive_property" index="0" unique_id=758833783]
-position = Vector2(23, 116)
-
-[node name="InteractionArea2D" parent="interactive_property" index="1" unique_id=64458683]
-position = Vector2(23, 177)
-
-[node name="CollisionShape2D" parent="interactive_property/InteractionArea2D" index="0" unique_id=718742415]
-position = Vector2(1, 5)
-
-[node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("4_cve4p")]
-position = Vector2(0, 116)
-
-[editable path="interactive_property"]
-[editable path="detectionArea2D"]
