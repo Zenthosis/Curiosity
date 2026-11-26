@@ -558,7 +558,7 @@ height = 22.0
 light_mask = 3
 y_sort_enabled = true
 script = ExtResource("1_rhh7w")
-base_speed = 500.0
+base_speed = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=670110074]
 visible = false

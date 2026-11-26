@@ -38,7 +38,7 @@ func _ready() -> void:
 		connect_interactive(interactive)
 	
 	#INTRO CUTSCENE        
-	#trigger_cutscene("Intro1")
+	trigger_cutscene("Intro1")
 	
 	#Game test
 	#trigger_cutscene("Intro2")

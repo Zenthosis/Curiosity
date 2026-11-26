@@ -1,7 +1,5 @@
 shader_type canvas_item;
 
-//uniform sampler2D texture_diffuse;
-//uniform sampler2D texture_normal;
 uniform vec2 object_pos;
 uniform vec2 light_pos;
 
@@ -12,7 +10,6 @@ void fragment() {
 }
 
 void light() {
-	// vec2 light_pos = LIGHT_VERTEX.xy; // xy of the emitter of the light
 	float cNdotL = max(0.0, dot(NORMAL, LIGHT_DIRECTION));
 
 	if (light_pos.y > object_pos.y){
