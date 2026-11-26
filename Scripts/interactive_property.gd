@@ -58,7 +58,6 @@ func _set_interactions() -> void:
 func _ready() -> void:
 	_set_light_behaviour()
 	_set_interactions()
-	#GameManager.light_position_sent.connect(_on_light_position_received)
 	GameManager.objects_revealed.connect(_on_objects_revealed)
 	detection_area_2d.area_entered.connect(_on_detection_area_2d_area_entered)
 	detection_area_2d.area_exited.connect(_on_detection_area_2d_area_exited)

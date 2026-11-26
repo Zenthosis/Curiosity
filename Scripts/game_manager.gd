@@ -20,9 +20,16 @@ var obj_interact_type: Global1.InteractTypes
 var obj_repeat_type: Global1.RepeatTypes
 
 signal objects_revealed(reveal_type: String, visible: bool)
-signal light_position_sent(torch_position: Vector2)
+#signal light_position_sent(torch_position: Vector2)
 signal pickup_anim_finished()
 
+func _fast_forward(enabled: bool):
+	if enabled:
+		print("ff enabled")
+		Engine.time_scale = 13
+	else: 
+		Engine.time_scale = 1 
+		print("ff disabled")
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -37,7 +44,8 @@ func _ready() -> void:
 	for interactive in get_tree().get_nodes_in_group("interactives"):
 		connect_interactive(interactive)
 	
-	#INTRO CUTSCENE        
+	#INTRO CUTSCENE
+	_fast_forward(true)        
 	trigger_cutscene("Intro1")
 	
 	#Game test
@@ -170,6 +178,7 @@ func _pickup_trigger() -> void:
 	pickup_anim_finished.emit()
 	
 func _process(_delta: float) -> void:
-	if light_is_on == true:
-		light_position_sent.emit(current_light.global_position)
 	pass
+	#if light_is_on == true:
+		#light_position_sent.emit(current_light.global_position)
+	#pass

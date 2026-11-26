@@ -5,7 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="5_4re6i"]
 [ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="6_10gyx"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1h5x"]
+resource_local_to_scene = true
+radius = 8.0
+height = 39.999996
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gqya"]
+resource_local_to_scene = true
+radius = 14.56022
+
 [node name="Flashlight" type="Node2D" unique_id=1919540944]
+y_sort_enabled = true
 
 [node name="LightSprite" type="Sprite2D" parent="." unique_id=1350335161]
 y_sort_enabled = true
@@ -25,7 +35,13 @@ position = Vector2(-1, -45)
 [node name="InteractionArea2D" parent="interactive_property" index="1" unique_id=64458683]
 position = Vector2(0, 0)
 
+[node name="CollisionShape2D" parent="interactive_property/InteractionArea2D" index="0" unique_id=718742415]
+shape = SubResource("CapsuleShape2D_q1h5x")
+
 [node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("6_10gyx")]
+
+[node name="CollisionShape2D" parent="detectionArea2D" index="0" unique_id=1628464791]
+shape = SubResource("CircleShape2D_8gqya")
 
 [editable path="interactive_property"]
 [editable path="detectionArea2D"]

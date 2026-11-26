@@ -6,15 +6,15 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.light_position_sent.connect(_on_light_position_received)
+	#GameManager.light_position_sent.connect(_on_light_position_received)
 	mat.set_shader_parameter("object_pos", opaque_body.global_position)
 	pass
 	
 	
-func _on_light_position_received(light_pos: Vector2):
-	mat.set_shader_parameter("light_pos", light_pos)
+#func _on_light_position_received(light_pos: Vector2):
+	#mat.set_shader_parameter("light_pos", light_pos)
 	#print_debug(torch_pos)
-	pass
+	#pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta: float) -> void:
