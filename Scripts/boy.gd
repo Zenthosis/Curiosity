@@ -22,7 +22,7 @@ signal camera_switch_triggered
 
 enum BoyStates {LYING_DOWN, SITTING, STANDING}
 @export var boy_state = BoyStates.LYING_DOWN
-#var cutscene_mode: bool = false
+var cutscene_mode: bool = false
 
 
 func _ready():
@@ -64,15 +64,19 @@ func get_input():
 			
 			
 func _set_cutscene_mode(scene_bool):
+	cutscene_mode = scene_bool
+	_can_move(true)
 	_can_input(!scene_bool)
 	_can_interact(!scene_bool)
 	
 func _can_input(inputabool: bool):
-	can_input = inputabool
+		can_input = inputabool
 	#normal_direction_mode = movabool
 	
 func _can_move(movabool: bool):
 	can_move = movabool
+	if !can_move:
+		velocity = Vector2.ZERO
 	
 func _can_interact(enabool: bool) -> void:
 	can_interact = enabool

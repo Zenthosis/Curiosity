@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://gxvx6dkchceu"]
+
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="1_isxtd"]
+[ext_resource type="Material" uid="uid://crli075ohjbum" path="res://Resources/opaque_shader.tres" id="2_tefs0"]
+[ext_resource type="Texture2D" uid="uid://b7ij5mf4thjfc" path="res://Assets/Art/Cave/Stala.png" id="3_v6oxj"]
+[ext_resource type="Texture2D" uid="uid://diaxbt8lk11xt" path="res://Assets/Art/Cave/StalaNormal.png" id="4_isxtd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_88pay"]
+diffuse_texture = ExtResource("3_v6oxj")
+normal_texture = ExtResource("4_isxtd")
+
+[node name="Stala" type="StaticBody2D" unique_id=1489364574]
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("1_isxtd")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=964394829]
+position = Vector2(-1, 8)
+polygon = PackedVector2Array(32, -20, 38, 12, 38, 21, 18, 30, -23, 30, -36, 24, -36, 13, -30, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452055994]
+y_sort_enabled = true
+material = ExtResource("2_tefs0")
+texture = SubResource("CanvasTexture_88pay")

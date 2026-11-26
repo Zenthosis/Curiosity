@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cmoy0nht5i8x3"]
+
+[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="1_ntf0l"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="2_7tvnc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7tvnc"]
+resource_local_to_scene = true
+radius = 8.0
+height = 39.999996
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mahe4"]
+resource_local_to_scene = true
+radius = 14.56022
+
+[node name="trigger_region" type="Node2D" unique_id=412037829]
+z_as_relative = false
+
+[node name="interactive_property" parent="." unique_id=1398313704 instance=ExtResource("2_7tvnc")]
+interact_type = 3
+repeat_type = 1
+
+[node name="CollisionShape2D" parent="interactive_property/InteractionArea2D" parent_id_path=PackedInt32Array(1398313704, 64458683) index="0" unique_id=718742415]
+shape = SubResource("CapsuleShape2D_7tvnc")
+
+[node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("1_ntf0l")]
+
+[node name="CollisionShape2D" parent="detectionArea2D" index="0" unique_id=1628464791]
+shape = SubResource("CircleShape2D_mahe4")
+
+[editable path="interactive_property"]
+[editable path="detectionArea2D"]

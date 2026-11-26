@@ -13,7 +13,7 @@ texture = ExtResource("1_hh0l3")
 
 [node name="pickup_property" parent="." unique_id=1038028029 instance=ExtResource("2_7hrg5")]
 item_name = "Torch"
-scene_path = "res://Scenes/Lights/torch.tscn"
+scene_path = "res://Scenes/InvItems/Lights/torch.tscn"
 
 [node name="interactive_property" parent="." unique_id=1673793516 instance=ExtResource("3_xig23")]
 interact_type = 1

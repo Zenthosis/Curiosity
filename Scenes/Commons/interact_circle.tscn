@@ -3,12 +3,9 @@
 [ext_resource type="Script" uid="uid://bdckvri8s5fl2" path="res://Scripts/notif.gd" id="1_fog63"]
 [ext_resource type="Texture2D" uid="uid://dj3gwr5562bs1" path="res://Assets/Art/Interactables/interactcircle.png" id="2_i8ab5"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l4nxo"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yygdi"]
 blend_mode = 1
 light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yygdi"]
-light_mode = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyuhl"]
 atlas = ExtResource("2_i8ab5")
@@ -254,7 +251,6 @@ turbulence_noise_scale = 0.907
 z_index = -2
 z_as_relative = false
 y_sort_enabled = true
-material = SubResource("CanvasItemMaterial_l4nxo")
 script = ExtResource("1_fog63")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1700470913]
@@ -262,7 +258,8 @@ modulate = Color(18.892157, 18.892157, 18.892157, 1)
 y_sort_enabled = true
 material = SubResource("CanvasItemMaterial_yygdi")
 sprite_frames = SubResource("SpriteFrames_12wg7")
-animation = &"interactcircle_idle"
+animation = &"interactcircle_out"
+frame_progress = 0.70057577
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569915466]
 libraries/ = SubResource("AnimationLibrary_v8bcc")

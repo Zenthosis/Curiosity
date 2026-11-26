@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cknlkj3s6q51n"]
+
+[ext_resource type="Texture2D" uid="uid://cxkqspgexc68c" path="res://Assets/Art/mcguffin.png" id="1_dc6ej"]
+[ext_resource type="PackedScene" uid="uid://bjv2q0g6255dm" path="res://Scenes/Commons/interactive_property.tscn" id="3_ttva4"]
+[ext_resource type="PackedScene" uid="uid://dxaohken73d4m" path="res://Scenes/Commons/detection_area_2d.tscn" id="4_3iha8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48d0g"]
+light_mode = 2
+
+[node name="McGuffinxx" type="Node2D" unique_id=412037829]
+z_as_relative = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1760029231]
+z_as_relative = false
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_48d0g")
+texture = ExtResource("1_dc6ej")
+
+[node name="interactive_property" parent="." unique_id=1673793516 instance=ExtResource("3_ttva4")]
+
+[node name="NotifMarker2D" parent="interactive_property" index="0" unique_id=758833783]
+position = Vector2(-31, -93)
+
+[node name="InteractionArea2D" parent="interactive_property" index="1" unique_id=64458683]
+position = Vector2(-10, -23)
+
+[node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("4_3iha8")]
+position = Vector2(0, -60)
+
+[editable path="interactive_property"]
+[editable path="detectionArea2D"]

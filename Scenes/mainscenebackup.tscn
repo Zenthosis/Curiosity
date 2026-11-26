@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfkbj6buo8q8a" path="res://Scenes/Environment/cave_wall_1.tscn" id="5_p3p1x"]
 [ext_resource type="PackedScene" uid="uid://cc8so6d1uujs4" path="res://Scenes/Environment/cave_wall_end.tscn" id="6_rled7"]
 [ext_resource type="PackedScene" uid="uid://ca1bd2hdgc485" path="res://Scenes/boy.tscn" id="7_ibkfk"]
-[ext_resource type="PackedScene" uid="uid://tgbtkrmy25vi" path="res://Scenes/Lights/secret_torch.tscn" id="8_8ymml"]
+[ext_resource type="PackedScene" uid="uid://tgbtkrmy25vi" path="res://Scenes/InvItems/Lights/secret_torch.tscn" id="8_8ymml"]
 [ext_resource type="PackedScene" uid="uid://c5tg7bspaj1xg" path="res://Scenes/Environment/cave_ceiling.tscn" id="9_yw76f"]
 [ext_resource type="PackedScene" uid="uid://b1nbpv0syjy4a" path="res://Scenes/Environment/skylight.tscn" id="10_b55qe"]
 

@@ -283,6 +283,7 @@ material = SubResource("CanvasItemMaterial_8wvga")
 position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_12wg7")
 animation = &"questionmark_idle"
+frame_progress = 1.0
 offset = Vector2(0, 23)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569915466]

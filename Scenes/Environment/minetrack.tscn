@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://is0ekq2gbwnc"]
+
+[ext_resource type="Texture2D" uid="uid://whv3j018qerg" path="res://Assets/Art/mine/minetrack.png" id="1_fmefi"]
+
+[node name="MinetrackFlat" type="Sprite2D" unique_id=979399652]
+z_index = -3
+scale = Vector2(2, 2)
+texture = ExtResource("1_fmefi")

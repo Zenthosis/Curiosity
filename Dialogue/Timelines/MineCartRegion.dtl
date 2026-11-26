@@ -1,0 +1,3 @@
+Nicky: Shit.
+Nicky: Exit's blocked.
+do GameManager.trigger_cutscene("MineCartRegion")

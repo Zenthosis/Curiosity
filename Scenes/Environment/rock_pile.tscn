@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://tg7r4j0a6d6e"]
+
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="1_m4ikh"]
+[ext_resource type="Material" uid="uid://crli075ohjbum" path="res://Resources/opaque_shader.tres" id="2_o1qiw"]
+[ext_resource type="Texture2D" uid="uid://c5f1sjdtqv2iv" path="res://Assets/Art/Cave/RockPile.png" id="3_j0gp0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m4ikh"]
+diffuse_texture = ExtResource("3_j0gp0")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j0gp0"]
+polygon = PackedVector2Array(-22, 18, -20, 16, -19, 16, 5, 22, 12, 30, -20, 19, -20, 17, -21, 18, -21, 20, -37, 23, -50, 24)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m4ikh"]
+polygon = PackedVector2Array(-21, 27, -20, 20, -15, 7, -13, 3, -18, 3, -21, 17, -23, 27)
+
+[node name="RockPile" type="StaticBody2D" unique_id=1489364574]
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("1_m4ikh")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=964394829]
+visible = false
+polygon = PackedVector2Array(19, -85, 68, -63, 99, 11, 98, 87, 50, 99, -44, 98, -92, 76, -69, -5, -24, -86)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452055994]
+y_sort_enabled = true
+material = ExtResource("2_o1qiw")
+texture = SubResource("CanvasTexture_m4ikh")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=572322002]
+position = Vector2(28, -28)
+occluder = SubResource("OccluderPolygon2D_j0gp0")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1918965618]
+position = Vector2(60, -26)
+occluder = SubResource("OccluderPolygon2D_m4ikh")

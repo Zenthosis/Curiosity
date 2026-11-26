@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://llxvumcpveoy"]
+
+[ext_resource type="Material" uid="uid://crli075ohjbum" path="res://Resources/opaque_shader.tres" id="1_3bqjp"]
+[ext_resource type="Texture2D" uid="uid://bycsx3n5u4b1e" path="res://Assets/Art/skeleton_arm.png" id="2_fvey5"]
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="4_mihg5"]
+
+[node name="skeleton_arm" type="StaticBody2D" unique_id=439633875]
+z_index = -3
+z_as_relative = false
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415304949]
+light_mask = 7
+material = ExtResource("1_3bqjp")
+position = Vector2(0, 10.64)
+texture = ExtResource("2_fvey5")
+offset = Vector2(0, -10.64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=128513557]
+position = Vector2(0.5, 0)
+polygon = PackedVector2Array(1, 5, 2, 5, 2, 9, -3, 9, -3, 7, -3, 6, -2, 6, -2, 5, -2, -3, -2, -6, -2, -9, 1, -9, 1, -1.5)
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("4_mihg5")]

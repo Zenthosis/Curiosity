@@ -5,12 +5,12 @@ extends AudioStreamPlayer
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("test"):
-		if not playing:
-			play()
-		else:
-			pass
+#func _input(_event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("test"):
+		#if not playing:
+			#play()
+		#else:
+			#pass
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

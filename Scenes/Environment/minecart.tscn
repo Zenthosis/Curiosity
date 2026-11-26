@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cnnw0guww6kvq"]
+
+[ext_resource type="Material" uid="uid://crli075ohjbum" path="res://Resources/opaque_shader.tres" id="1_gq44w"]
+[ext_resource type="Texture2D" uid="uid://bay4othbemkju" path="res://Assets/Art/mine/minecart_dented.png" id="2_gq44w"]
+[ext_resource type="Texture2D" uid="uid://cwco6yaduaevt" path="res://Assets/Art/mine/minecart_dented_normal.png" id="3_gq44w"]
+[ext_resource type="PackedScene" uid="uid://oyqpfhkfpkjh" path="res://Scenes/Commons/opaque_property.tscn" id="4_groj5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_35td5"]
+diffuse_texture = ExtResource("2_gq44w")
+normal_texture = ExtResource("3_gq44w")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gq44w"]
+polygon = PackedVector2Array(0, 0, 0, -19, 5, -19, 6, -19, 6, -18, 8, -18, 8, -17, 8, -16, 10, -16, 11, -16, 11, -15, 12, -15, 13, -15, 13, -14, 14, -14, 14, -13, 19, -13, 19, -14, 20, -14, 26, -14, 26, -16, 27, -16, 27, -17, 28, -17, 28, -18, 29, -18, 29, -19.5, 29, -20, 30, -20, 30, 0.5, 30, 1, 29, 1, 29, -16, 28, -16, 28, -15, 27, -15, 27, -13, 20.5, -13, 20, -13, 20, -12, 13, -12, 13, -13, 12, -13, 12, -14, 10, -14, 10, -15, 8, -15, 7, -15, 7, -16.5, 7, -17, 5, -17, 5, -18, 1, -18, 1, -1, 2, -1, 2, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0)
+
+[node name="minecart_dented" type="StaticBody2D" unique_id=439633875]
+z_as_relative = false
+y_sort_enabled = true
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415304949]
+light_mask = 7
+material = ExtResource("1_gq44w")
+position = Vector2(0, 10.64)
+texture = SubResource("CanvasTexture_35td5")
+offset = Vector2(0, -10.64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=128513557]
+polygon = PackedVector2Array(16, 13, 16, 13, -16, 13, -16, -8, -10, -13, -5, -13, -1, -13, 5, -13, 12, -12, 16, -9, 16, 13, 16, 13)
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=149444941]
+position = Vector2(-16, 11.5)
+occluder = SubResource("OccluderPolygon2D_gq44w")
+occluder_light_mask = 7
+
+[node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("4_groj5")]

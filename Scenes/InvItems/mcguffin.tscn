@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://daebgcnq1gjho"]
+
+[ext_resource type="Texture2D" uid="uid://cxkqspgexc68c" path="res://Assets/Art/mcguffin.png" id="1_q0q3m"]
+
+[node name="McGuffin" type="Node2D" unique_id=1919540944]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1350335161]
+texture = ExtResource("1_q0q3m")

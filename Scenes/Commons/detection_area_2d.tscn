@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxaohken73d4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ickxo"]
+resource_local_to_scene = true
 radius = 14.56022
 
 [node name="detectionArea2D" type="Area2D" unique_id=942763582]

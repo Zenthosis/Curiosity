@@ -140,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_khw71")
 }],
-"loop": true,
+"loop": 1,
 "name": &"getting_up",
 "speed": 5.0
 }, {
@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fxxpn")
 }],
-"loop": false,
+"loop": 0,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -174,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f5qr6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"laid_down",
 "speed": 5.0
 }, {
@@ -191,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5afkv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"sat_up",
 "speed": 5.0
 }, {
@@ -211,7 +211,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c4sk1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"sitting_up",
 "speed": 5.0
 }, {
@@ -231,7 +231,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qr8ka")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -612,7 +612,6 @@ stream = ExtResource("6_bije5")
 script = ExtResource("5_2sglr")
 
 [node name="DetectionRadius" type="Area2D" parent="." unique_id=156916613]
-visible = false
 position = Vector2(0, -30)
 collision_layer = 256
 collision_mask = 256

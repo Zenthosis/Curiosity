@@ -4,6 +4,8 @@ extends Camera2D
 @onready var object_cam: Camera2D = $"../ObjectCam"
 @onready var transition_cam: Camera2D = $"."
 @onready var curr_cam: Camera2D = object_cam
+@export var target_object: Node2D
+
 var TransTween: Tween
 var ZoomTween: Tween
 var OffsetTween: Tween
@@ -26,7 +28,10 @@ func switch_camera(target_pos: Vector2, switch_duration: float):
 	transition_cam.zoom = curr_cam.zoom
 	transition_cam.offset = curr_cam.offset
 	if main_cam.is_current():
-		object_cam.global_position = target_pos
+		if target_object != null:
+			object_cam.global_position = target_object.global_position
+		else:
+			object_cam.global_position = target_pos
 		curr_cam = object_cam
 	else:
 		curr_cam = main_cam

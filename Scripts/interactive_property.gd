@@ -7,6 +7,7 @@ extends Node
 
 @export var light_type: Global1.LightTypes
 @export var interact_type: Global1.InteractTypes
+@export var repeat_type: Global1.RepeatTypes
 var col_poly_2d: CollisionPolygon2D
 
 var q_mark: Node2D
@@ -48,9 +49,10 @@ func _set_interactions() -> void:
 			pass
 		Global1.InteractTypes.DIALOGUE_ONLY:
 			pass
-		Global1.InteractTypes.CUTSCENE:
-			pass
-		Global1.InteractTypes.SECRET_PHASE:
+		Global1.InteractTypes.REGION_TRIGGER:
+			interaction_area_2d.queue_free()
+			notif_marker_2d.queue_free()
+		Global1.InteractTypes.DIALOGUE_AND_CUTSCENE:
 			pass
 			
 func _ready() -> void:
@@ -65,6 +67,8 @@ func _ready() -> void:
 	
 func _on_detection_area_2d_area_entered(_area: Area2D) -> void:
 	object_found.emit(target_object, true)
+	if interact_type == Global1.InteractTypes.REGION_TRIGGER:
+		detection_area_2d.set_deferred("monitoring",false)
 	#print_debug (target_object," found by ", area)
 	
 func _on_detection_area_2d_area_exited(_area: Area2D) -> void:
@@ -82,44 +86,48 @@ func _on_objects_revealed(tool_light_type: Global1.LightTypes, revealed: bool):
 				#print_debug("secret revealed")
 			
 func _object_notify(activated: bool):
-	interaction_area_2d.monitoring = activated
-	#
-	if activated == true:
-		if not has_node("QuestionMark"):
-			#print_debug("test object notify")
-			q_mark = Global1.q_mark_scene.instantiate()
-			add_child(q_mark)
-			q_mark.position = notif_marker_2d.position
-		elif has_node("QuestionMark"):
-			q_mark._notif_handling("entering", "question_mark")
-	elif activated == false:
-		if has_node("QuestionMark"):
-			q_mark._notif_handling("exiting", "question_mark")
-		elif not has_node("QuestionMark"):
-			pass
-			
-	if activated == true:
-		if not has_node("InteractCircle"):
-			i_circle = Global1.i_circle_scene.instantiate()
-			add_child(i_circle)
-			i_circle.position = interaction_area_2d.position
-		elif has_node("InteractCircle"):
-			i_circle._notif_handling("entering", "interact_circle")
-	elif activated == false:
-		if has_node("InteractCircle"):
-			i_circle._notif_handling("exiting", "interact_circle")
-		elif not has_node("InteractCircle"):
-			pass
-		#################################################
-	if light_type == Global1.LightTypes.SECRET_PHASE:
-		col_poly_2d.set_deferred("disabled", activated)
+	#print_debug("Object notify")
+	if interact_type != Global1.InteractTypes.REGION_TRIGGER:
+		interaction_area_2d.monitoring = activated
+		#
+		if activated == true:
+			if not has_node("QuestionMark"):
+				#print_debug("test object notify")
+				q_mark = Global1.q_mark_scene.instantiate()
+				add_child(q_mark)
+				q_mark.position = notif_marker_2d.position
+			elif has_node("QuestionMark"):
+				q_mark._notif_handling("entering", "question_mark")
+		elif activated == false:
+			if has_node("QuestionMark"):
+				q_mark._notif_handling("exiting", "question_mark")
+			elif not has_node("QuestionMark"):
+				pass
+				
+		if activated == true:
+			if not has_node("InteractCircle"):
+				i_circle = Global1.i_circle_scene.instantiate()
+				add_child(i_circle)
+				i_circle.position = interaction_area_2d.position
+			elif has_node("InteractCircle"):
+				i_circle._notif_handling("entering", "interact_circle")
+		elif activated == false:
+			if has_node("InteractCircle"):
+				i_circle._notif_handling("exiting", "interact_circle")
+			elif not has_node("InteractCircle"):
+				pass
+			#################################################
+		if light_type == Global1.LightTypes.SECRET_PHASE:
+			col_poly_2d.set_deferred("disabled", activated)
+	elif interact_type == Global1.InteractTypes.REGION_TRIGGER:
+		i_circle_entered.emit(target_object, true, interact_type, repeat_type)
 
 func _on_interaction_area_2d_area_entered(_area: Area2D) -> void:
-	i_circle_entered.emit(target_object, true, interact_type)
+	i_circle_entered.emit(target_object, true, interact_type, repeat_type)
 	#print_debug("i_circle_entered ", target_object)
 	
 func _on_interaction_area_2d_area_exited(_area: Area2D) -> void:
-	i_circle_entered.emit(target_object, false, interact_type)
+	i_circle_entered.emit(target_object, false, interact_type, repeat_type)
 	#print_debug("i_circle_exited ", target_object)
 	
 

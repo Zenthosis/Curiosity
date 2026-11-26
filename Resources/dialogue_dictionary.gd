@@ -6,4 +6,5 @@ class_name dialog_dictionary_resource
 
 
 func _find_dialog(key: String):
+	print_debug(key)
 	return dialog_dict[key]

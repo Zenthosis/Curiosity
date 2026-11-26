@@ -1,4 +1,4 @@
-Nicky: !!! Oh shit, creepy white stuff!
+Nicky: !!! Oh shoot, creepy white stuff!
 [wait time="1.5"]
 do GameManager.change_boy_input_mode(true)
 do GameManager.change_boy_move_mode(true)

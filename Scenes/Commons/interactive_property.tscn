@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://vr7ihdsqdhpg" path="res://Scripts/interactive_property.gd" id="1_sd40i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sd40i"]
+resource_local_to_scene = true
 radius = 8.0
-height = 48.0
+height = 39.999996
 
 [node name="interactive_property" type="Node2D" unique_id=1398313704 groups=["interactives"]]
 script = ExtResource("1_sd40i")

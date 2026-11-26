@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://y07jtw4esukn"]
 
-[ext_resource type="Texture2D" uid="uid://d2nspifbqekrf" path="res://Resources/boy/boy_idle/torchlight.tres" id="1_l6ixh"]
+[ext_resource type="Texture2D" uid="uid://nekc2g1up3q0" path="res://Assets/Art/Lights/light_circle.png" id="1_l6ixh"]
 
 [node name="PurpleLight" type="Node2D" unique_id=1637054650]
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1613452027]
 color = Color(0.53333336, 0, 1, 0.3882353)
-energy = 0.94
+energy = 4.58
+range_item_cull_mask = 7
+shadow_enabled = true
+shadow_item_cull_mask = 7
 texture = ExtResource("1_l6ixh")
 texture_scale = 2.72
+height = 365.0

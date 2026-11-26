@@ -12,20 +12,25 @@ config_version=5
 
 config/name="Curiosity"
 run/main_scene="uid://dbiovhiqxvlu3"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bccknweky5c7j"
 
 [autoload]
 
-Dialogic="*uid://ds2q0uclmolvu"
 Global1="*uid://cd1fpiiv06n4b"
 GameManager="*uid://3ag6encfd7pk"
 Inventory="*uid://bdgw08v7eo270"
+Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
 directories/dch_directory={
-"Nicky": "res://Dialogue/Characters/Nicky.dch"
+"Characters/Nicky": "res://Dialogue/Characters/Nicky.dch",
+"Nicky": "res://Nicky.dch"
 }
 directories/dtl_directory={
 "BeingDrawing": "res://Dialogue/Timelines/Island/BeingDrawing.dtl",
@@ -36,6 +41,9 @@ directories/dtl_directory={
 "Intro2": "res://Dialogue/Timelines/Intro2.dtl",
 "Intro3": "res://Dialogue/Timelines/Intro3.dtl",
 "Ladder": "res://Dialogue/Timelines/Ladder.dtl",
+"McGuffin": "res://Dialogue/Timelines/McGuffin.dtl",
+"MineCartRegion": "res://Dialogue/Timelines/MineCartRegion.dtl",
+"MinetrackHint": "res://Dialogue/Timelines/MinetrackHint.dtl",
 "SecretMessage": "res://Dialogue/Timelines/SecretMessage.dtl",
 "SecretTorch": "res://Dialogue/Timelines/SecretTorch.dtl",
 "TornLadder": "res://Dialogue/Timelines/TornLadder.dtl",
@@ -64,7 +72,7 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={
-"\"?!.,;:\"": 0.1
+"\"?!.,;:\"": 0.2
 }
 audio/channel_defaults={
 "": {
@@ -84,22 +92,13 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogue/Styles/test_style.tres"]
 layout/default_style="res://Dialogue/Styles/test_style.tres"
 variables={
-"BeingDrawingVars": {
-"being_drawing_counter": 0.0,
-"being_drawing_knowledge": false
-},
-"HotDogVars": {
-"hot_dog_counter": 0.0,
-"hot_dog_knowledge": false
-},
-"HumanDrawingVars": {
-"human_drawing_counter": 0.0,
-"human_drawing_knowledge": false
+"HiddenMsg1": {
+"HiddenMsgCounter": 0
 },
 "response": ""
 }
 text/autoadvance_enabled=true
-text/autoadvance_fixed_delay=1.0
+text/autoadvance_fixed_delay=1.2
 text/autoadvance_per_word_delay=0
 
 [display]

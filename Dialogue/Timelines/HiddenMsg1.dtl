@@ -1,5 +1,10 @@
-Nicky: Oh shiiiiiiiiit
-Nicky: Secret message? Score.
-Nicky: Let's see what it says...
-"If you're reading this, fuck you."
-Nicky: ... Fuck you, random cave stranger. I hope your death was long and pointless.
+if {HiddenMsg1.HiddenMsgCounter} == 0:
+	Nicky (Neutral): Oh shiiiiiiiiit
+	Nicky: Secret message? Score.
+	Nicky: Let's see what it says...
+	"If you're reading this, fuck you."
+	Nicky (Neutral): ...
+	Nicky (Angry): ... Fuck you too , random cave stranger. I hope your death was long and pointless.
+elif {HiddenMsg1.HiddenMsgCounter}  >  0:
+	Nicky (Angry): ... Fucking bitch.
+set {HiddenMsg1.HiddenMsgCounter} += 1.0

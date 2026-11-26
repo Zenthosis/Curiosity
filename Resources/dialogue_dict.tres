@@ -11,6 +11,10 @@ dialog_dict = Dictionary[String, String]({
 "Intro2": "Intro2",
 "Intro3": "Intro3",
 "Ladder": "Ladder",
+"McGuffin": "McGuffin",
+"MineCartRegion": "MineCartRegion",
+"MinetrackHint": "MinetrackHint",
+"SecretRock": "SecretRock",
 "SecretTorch": "SecretTorch",
 "Torch": "torch",
 "TornLadder": "TornLadder"

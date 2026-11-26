@@ -35,7 +35,7 @@ light_type = 1
 position = Vector2(-38, -45)
 
 [node name="InteractionArea2D" parent="interactive_property" index="1" unique_id=64458683]
-position = Vector2(-28, 24)
+position = Vector2(-14, 12)
 
 [node name="detectionArea2D" parent="." unique_id=942763582 instance=ExtResource("3_5vhbk")]
 position = Vector2(0, -60)

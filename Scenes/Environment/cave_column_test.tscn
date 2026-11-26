@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u45xq"]
 shader = ExtResource("1_gpm2a")
 shader_parameter/object_pos = Vector2(0, 0)
-shader_parameter/torch_pos = Vector2(0, 0)
+shader_parameter/light_pos = Vector2(0, 0)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s6idi"]
 diffuse_texture = ExtResource("2_ioe5h")
@@ -38,9 +38,6 @@ rotation = -0.038112048
 rotation = -0.015590996
 range_item_cull_mask = 3
 texture_scale = 1.52
-
-[node name="Sprite2D" parent="Skylight" index="1" unique_id=1220568039]
-visible = false
 
 [node name="opaque_property" parent="." unique_id=1646873063 instance=ExtResource("5_hmb7s")]
 
