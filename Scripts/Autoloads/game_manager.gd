@@ -16,8 +16,8 @@ var secret_light_on: bool = false
 @export var light_is_on: bool = false
 var interact_object: Node2D
 var interact_object_ID : String
-var obj_interact_type: Global1.InteractTypes
-var obj_repeat_type: Global1.RepeatTypes
+var obj_interact_type: Constants.InteractTypes
+var obj_repeat_type: Constants.RepeatTypes
 
 signal objects_revealed(reveal_type: String, visible: bool)
 #signal light_position_sent(torch_position: Vector2)
@@ -48,9 +48,6 @@ func _ready() -> void:
 	#_fast_forward(true)        
 	trigger_cutscene("Intro1")
 	
-	#Game test
-	#trigger_cutscene("Intro2")
-	
 func trigger_cutscene(cutscene_id:String):
 	boy._set_cutscene_mode(true)
 	cutscene_player.play(cutscene_id)
@@ -63,10 +60,10 @@ func connect_interactive(interactive: Node2D) -> void:
 		interactive.object_found.connect(_on_object_found)
 		interactive.i_circle_entered.connect(_on_i_circle_entered)
 
-func set_interact_type(type: Global1.InteractTypes):
+func set_interact_type(type: Constants.InteractTypes):
 	obj_interact_type = type
 
-func set_repeat_type(type: Global1.RepeatTypes):
+func set_repeat_type(type: Constants.RepeatTypes):
 	obj_repeat_type = type
 	
 func set_timeline_ID(obj_name: String):
@@ -87,17 +84,17 @@ func _dialogic_timeline_ender() -> void:
 	print_debug("timeline ended")
 	print_debug(obj_interact_type)
 	match obj_interact_type:
-		Global1.InteractTypes.DIALOGUE_ONLY:
+		Constants.InteractTypes.DIALOGUE_ONLY:
 			await get_tree().create_timer(0.5).timeout
 			change_boy_input_mode(true)
 			change_boy_interact_mode(true)
 			change_boy_move_mode(true)
-		Global1.InteractTypes.ITEM_PICKUP:
+		Constants.InteractTypes.ITEM_PICKUP:
 			_pickup_trigger()
 			await Inventory.inventory_updated
 			change_boy_input_mode(true)
 			change_boy_move_mode(true)
-		Global1.InteractTypes.REGION_TRIGGER: #or Global1.InteractTypes.DIALOGUE_AND_CUTSCENE:
+		Constants.InteractTypes.REGION_TRIGGER: #or Constants.InteractTypes.DIALOGUE_AND_CUTSCENE:
 			print_debug("region trigger")
 			print_debug("awaiting sequence finish signal")
 			await cutscene_player.sequence_finished
@@ -105,7 +102,7 @@ func _dialogic_timeline_ender() -> void:
 			boy._set_cutscene_mode(false)
 
 		
-	if obj_repeat_type == Global1.RepeatTypes.ONESHOT:
+	if obj_repeat_type == Constants.RepeatTypes.ONESHOT:
 		interact_object.get_node("detectionArea2D").monitoring = false
 		#change_boy_input_mode(false)
 		#change_boy_interact_mode(false)
@@ -136,12 +133,12 @@ func _on_camera_switch_triggered():
 func _on_inventory_triggered() -> void:
 	ui_inventory.visible = !ui_inventory.visible
 	
-func _on_light_turned_on(light_type: Global1.LightTypes, light_on: bool) -> void:
-	if light_type == Global1.LightTypes.HIDDEN:
+func _on_light_turned_on(light_type: Constants.LightTypes, light_on: bool) -> void:
+	if light_type == Constants.LightTypes.HIDDEN:
 		hidden_light_on = light_on
 		objects_revealed.emit(light_type, hidden_light_on) 
 		#print_debug("hidden")
-	if light_type == Global1.LightTypes.SECRET: #or light_type == Global1.LightTypes.SECRET_PHASE:
+	if light_type == Constants.LightTypes.SECRET: #or light_type == Constants.LightTypes.SECRET_PHASE:
 		secret_light_on = light_on
 		#print_debug(light_type, " ", secret_light_on)
 		objects_revealed.emit(light_type, secret_light_on) 
@@ -159,7 +156,7 @@ func _on_object_found(target_object: Node2D, found: bool) -> void:
 	target_object.get_node("interactive_property")._object_notify(found)
 	#print("target_object ", target_object, "triggered for notification ", found)
 	
-func _on_i_circle_entered(target_object: Node2D, interactabool: bool, interact_behaviour: Global1.InteractTypes, repeat_behaviour: Global1.RepeatTypes) -> void:
+func _on_i_circle_entered(target_object: Node2D, interactabool: bool, interact_behaviour: Constants.InteractTypes, repeat_behaviour: Constants.RepeatTypes) -> void:
 	#print("on_i_circle_entered ", target_object, " ", interactabool)
 	change_boy_interact_mode(interactabool)
 	interact_object = target_object
@@ -167,7 +164,7 @@ func _on_i_circle_entered(target_object: Node2D, interactabool: bool, interact_b
 	if interactabool == true: 
 		obj_interact_type = interact_behaviour
 		obj_repeat_type = repeat_behaviour
-		if obj_interact_type == Global1.InteractTypes.REGION_TRIGGER:
+		if obj_interact_type == Constants.InteractTypes.REGION_TRIGGER:
 			_on_dialogue_triggered()
 
 

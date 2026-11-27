@@ -1,10 +1,12 @@
+## Camera switching scripts
+
 extends Camera2D
 
 @onready var main_cam: Camera2D = $"../Environment/Boy/MainCam"
 @onready var object_cam: Camera2D = $"../ObjectCam"
 @onready var transition_cam: Camera2D = $"."
 @onready var curr_cam: Camera2D = object_cam
-@export var target_object: Node2D
+@export var target_object: Node2D ## Export so that cutscenes can accept specific Node2Ds as a target
 
 var TransTween: Tween
 var ZoomTween: Tween
@@ -15,13 +17,11 @@ enum CamStatus {STARTED, ENDED}
 signal cam_transitioned(status: CamStatus)
  
 func _ready() -> void:
-	object_cam.global_position = Vector2(-480,-80)
-	pass # Replace with function body.
-	
+	object_cam.global_position = Vector2(-480,-80) #starting cam position
+
 func switch_camera_instant(target_cam: Camera2D):
 	target_cam.make_current()
-	
-	
+
 func switch_camera(target_pos: Vector2, switch_duration: float):
 	print("Current cam: ", curr_cam)
 	transition_cam.global_transform = curr_cam.global_transform
@@ -64,9 +64,8 @@ func switch_camera(target_pos: Vector2, switch_duration: float):
 	else:
 		object_cam.make_current()
 	
-# Called when the node enters the scene tree for the first time.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+#func _process(_delta: float) -> void:
+	#pass

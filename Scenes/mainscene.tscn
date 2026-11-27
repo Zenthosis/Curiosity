@@ -336,6 +336,7 @@ target_object = NodePath("../Environment/RegionTriggers/MineCartRegion")
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1635593577]
 
 [node name="Inventory" parent="UILayer" unique_id=1298701664 instance=ExtResource("1_xxieg")]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_top = 0.0
@@ -352,7 +353,7 @@ grow_vertical = 1
 y_sort_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=1666463175]
-color = Color(0.11764706, 0.10980392, 0.16078432, 1)
+color = Color(0.26405743, 0.24811123, 0.3437886, 1)
 
 [node name="TileMaps" type="Node" parent="Environment" unique_id=1027983460]
 
@@ -368,7 +369,7 @@ tile_set = SubResource("TileSet_dijpm")
 
 [node name="CaveBodyLayer" type="TileMapLayer" parent="Environment" unique_id=1633179502]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgDz/wQABAAAAAAAAQA4APj/AAAAAAAABADV/xYAAAAAAAAABAD3/xcAAAAAAAAABAD5//f/AAAAAAAABADw//f/AAAAAAAABBAuAPf/AAAAAAAABAAiAPf/AAAAAAAABAAEAOX/AAAAAAAAAQAXAOX/AAAAAAAAARAcAOf/AAAAAAAAARD+/+f/AAAAAAAAAQALAOT/AAAAAAAAAwAPAOT/AAAAAAAAAwD6/+n/AAAAAAAAAQAgAOr/AAAAAAAAARDn//v/AQAAAAAAAgDr//z/AAAAAAAAAhDY//v/AAAAAAAABADX/wIABAAAAAAAAgDm/xYABAAAAAAAAgABADMAAAAAAAAABAANADUAAAAAAAAABAAZADMAAAAAAAAABAAfABsAAAAAAAAAAgAcABoAAAAAAAAAAgAkABoAAAAAAAAAAgD5/yEAAAAAAAAAAgD9/x4AAAAAAAAAAgD5/ykAAAAAAAAAAgD6/zAAAAAAAAAAAgAhADIAAAAAAAAAAgAlAC0AAAAAAAAAAgAUABYABAAAAAAAAwALABUABAAAAAAAAwACABYABAAAAAAAAwAjAAYABAAAAAAABAAlAAYABAAAAAAABABAAAUABAAAAAAABABCAAUABAAAAAAABABEAAUABAAAAAAABABFAAUABAAAAAAABABFAAYABAAAAAAABQBHAAUABAAAAAAABABLAAEABAAAAAAAAwATAPn/AAAAAAAAARAGAPn/AAAAAAAAAQDj//T/AAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAABAPr/AAAAAAAAAhAZAPn/AAAAAAAAAgDz/wQABAAAAAAAAQA4APj/AAAAAAAABADV/xYAAAAAAAAABAD3/xcAAAAAAAAABAD5//f/AAAAAAAABAAuAPf/AAAAAAAABAAiAPf/AAAAAAAABAAEAOX/AAAAAAAAAQAXAOX/AAAAAAAAARAcAOf/AAAAAAAAARD+/+f/AAAAAAAAAQALAOT/AAAAAAAAAwAPAOT/AAAAAAAAAwD6/+n/AAAAAAAAAQAgAOr/AAAAAAAAARDm/xYABAAAAAAAAgABADMAAAAAAAAABAANADUAAAAAAAAABAAZADMAAAAAAAAABAAfABsAAAAAAAAAAgAcABoAAAAAAAAAAgAkABoAAAAAAAAAAgD5/yEAAAAAAAAAAgD9/x4AAAAAAAAAAgD5/ykAAAAAAAAAAgD6/zAAAAAAAAAAAgAhADIAAAAAAAAAAgAlAC0AAAAAAAAAAgAUABYABAAAAAAAAwALABUABAAAAAAAAwACABYABAAAAAAAAwAjAAYABAAAAAAABAAlAAYABAAAAAAABABAAAUABAAAAAAABABCAAUABAAAAAAABABEAAUABAAAAAAABABFAAUABAAAAAAABABFAAYABAAAAAAABQBHAAUABAAAAAAABABLAAEABAAAAAAAAwATAPn/AAAAAAAAARAGAPn/AAAAAAAAAQDr//z/AAAAAAAAAhDw//f/AAAAAAAABBDY//v/AAAAAAAABADX/wIABAAAAAAAAgDn//v/AQAAAAAAAgDg//P/AAAAAAAAAgA=")
 tile_set = SubResource("TileSet_pcysp")
 
 [node name="Player" type="Node" parent="Environment" unique_id=1839120810]
@@ -417,7 +418,7 @@ position = Vector2(-119, 253)
 
 [node name="SecretTorch" parent="Environment" unique_id=367821123 instance=ExtResource("15_tf7l5")]
 y_sort_enabled = true
-position = Vector2(-412, 303)
+position = Vector2(1196, 190)
 
 [node name="TornLadder" parent="Environment" unique_id=316087085 instance=ExtResource("17_tf7l5")]
 position = Vector2(-476, 90)
@@ -430,16 +431,9 @@ position = Vector2(142, -31)
 [node name="McGuffin" parent="Environment" unique_id=337838526 instance=ExtResource("30_j1a25")]
 z_as_relative = true
 y_sort_enabled = true
-position = Vector2(1115, 172)
+position = Vector2(1115, 168)
 
 [node name="Misc" type="Node" parent="Environment" unique_id=1649471098]
-
-[node name="WaterAudio2D" type="AudioStreamPlayer2D" parent="Environment" unique_id=1472084409]
-position = Vector2(-403, -423)
-stream = ExtResource("22_xdmf7")
-volume_db = 4.232
-max_distance = 500.0
-script = ExtResource("22_c35lc")
 
 [node name="Waterfall" type="Sprite2D" parent="Environment" unique_id=1072101624]
 position = Vector2(-401, -421)
@@ -451,12 +445,25 @@ texture = ExtResource("24_rgu87")
 [node name="MineCartRegion" parent="Environment/RegionTriggers" unique_id=785202780 instance=ExtResource("32_okbyl")]
 position = Vector2(1105, 97)
 
-[node name="CollisionShape2D" parent="Environment/RegionTriggers/MineCartRegion/interactive_property/InteractionArea2D" parent_id_path=PackedInt32Array(785202780, 1398313704, 64458683) index="0" unique_id=718742415]
+[node name="InteractionArea2D" parent="Environment/RegionTriggers/MineCartRegion/interactive_property" parent_id_path=PackedInt32Array(785202780, 1398313704) index="1" unique_id=64458683]
+visible = false
+
+[node name="CollisionShape2D" parent="Environment/RegionTriggers/MineCartRegion/interactive_property/InteractionArea2D" index="0" unique_id=718742415]
 shape = SubResource("CapsuleShape2D_mp7gq")
 
-[node name="CollisionShape2D" parent="Environment/RegionTriggers/MineCartRegion/detectionArea2D" parent_id_path=PackedInt32Array(785202780, 942763582) index="0" unique_id=1628464791]
+[node name="detectionArea2D" parent="Environment/RegionTriggers/MineCartRegion" index="1" unique_id=942763582]
+visible = false
+
+[node name="CollisionShape2D" parent="Environment/RegionTriggers/MineCartRegion/detectionArea2D" index="0" unique_id=1628464791]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_okbyl")
+
+[node name="WaterAudio2D" type="AudioStreamPlayer2D" parent="Environment/RegionTriggers" unique_id=1472084409]
+position = Vector2(-403, -423)
+stream = ExtResource("22_xdmf7")
+volume_db = 4.232
+max_distance = 500.0
+script = ExtResource("22_c35lc")
 
 [editable path="Environment/RegionTriggers/MineCartRegion"]
 [editable path="Environment/RegionTriggers/MineCartRegion/interactive_property"]

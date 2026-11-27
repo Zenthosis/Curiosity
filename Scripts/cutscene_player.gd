@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-signal sequence_finished
+signal sequence_finished ## For cutscenes that comprise of multiple dialogues
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

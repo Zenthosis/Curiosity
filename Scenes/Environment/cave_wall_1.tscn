@@ -24,6 +24,7 @@ texture = SubResource("CanvasTexture_35td5")
 offset = Vector2(0, -70)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=128513557]
+visible = false
 position = Vector2(3, 74)
 polygon = PackedVector2Array(6, -10, 69, -10, 82, -132, -82, -133, -82, -8, -50, 1, -2, 2)
 
