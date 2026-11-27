@@ -45,7 +45,7 @@ func _ready() -> void:
 		connect_interactive(interactive)
 	
 	#INTRO CUTSCENE
-	_fast_forward(true)        
+	#_fast_forward(true)        
 	trigger_cutscene("Intro1")
 	
 	#Game test

@@ -71,7 +71,6 @@ func _set_cutscene_mode(scene_bool):
 	
 func _can_input(inputabool: bool):
 		can_input = inputabool
-	#normal_direction_mode = movabool
 	
 func _can_move(movabool: bool):
 	can_move = movabool
@@ -83,14 +82,12 @@ func _can_interact(enabool: bool) -> void:
 	
 func animation_handler():
 		## Check direction
-	#if normal_direction_mode == true:
 	if direction_facing.x < 0:
 		sprite.flip_h = false
 	elif direction_facing.x > 0:
 		sprite.flip_h = true
 	
 	animation_tree.set("parameters/MoveBlend/blend_position", velocity.normalized())
-	#print(animation_tree.get("parameters/MoveBlend/blend_position"))
 	
 func _on_in_hand_switched(item_path: String):
 	#print_debug("on in hand switched")
